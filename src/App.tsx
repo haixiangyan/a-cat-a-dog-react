@@ -1,15 +1,34 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import styled from 'styled-components';
 import Button from '@material-ui/core/Button'
-import './App.css';
+import Child from './Child'
+import './App.scss'
+
+const Wrapper = styled.div`
+  text-align: center;
+  color: red;
+  .change {
+    color: green;
+  }
+`
 
 class App extends Component {
   render() {
+
     return (
-      <div className="App">
+      <Wrapper>
+        Test
         <Button variant="contained" color="primary">
           Hello World
         </Button>
-      </div>
+        <div className="change">
+          Change Color
+        </div>
+        <Child/>
+        <div className="hello">
+          Yes
+        </div>
+      </Wrapper>
     );
   }
 }
