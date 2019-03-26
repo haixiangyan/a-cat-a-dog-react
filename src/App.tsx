@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import axios from 'axios'
+import { catAxios, dogAxios } from "./axios"
 import styled from 'styled-components';
 import Button from '@material-ui/core/Button'
 import Child from './Child'
@@ -27,10 +27,20 @@ class App extends Component<IProps, IState> {
   }
 
   public async componentDidMount() {
-    const response = await axios.get('https://api.thecatapi.com/v1/images/search')
-    console.log(response)
+    const response = await catAxios.get('/images/search')
+    const votes = await catAxios.get('/votes?sub_id=hai_test')
+    console.log(votes)
     this.setState({
       animals: response.data
+    })
+  }
+
+  private vote = async () => {
+    const { animals } = this.state
+    await catAxios.post('/votes', {
+      image_id: 'eUKD6V2pm',
+      sub_id: 'hai_test',
+      value: 1
     })
   }
 
@@ -55,6 +65,7 @@ class App extends Component<IProps, IState> {
               <div>
                 {JSON.stringify(animal)}
               </div>
+              <Button onClick={this.vote}>Vote</Button>
             </div>
           )
         }
