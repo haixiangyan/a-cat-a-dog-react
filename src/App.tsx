@@ -6,6 +6,7 @@ import {connect} from "react-redux"
 import {IAxiosStore} from "./store"
 import {IAppActionProps, IAppStoreProps, IAppState, IAppProps} from "./env"
 import Child from './Child'
+import imagesService from './services/images'
 import './App.scss'
 
 const Wrapper = styled.div`
@@ -26,11 +27,11 @@ class App extends Component<IAppProps, IAppState> {
 
   public async componentDidMount() {
     await this.props.updateAxios('DOG')
-    const response = await this.props.axios.get('/images/search')
+    const resources = await imagesService.getImages()
     const votes = await this.props.axios.get('/votes?sub_id=hai_test')
     console.log(votes)
     this.setState({
-      animals: response.data
+      animals: resources
     })
   }
 
