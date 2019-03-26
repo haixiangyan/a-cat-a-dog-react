@@ -3,9 +3,8 @@ import {updateAxios} from "./store/axios/actions"
 import styled from 'styled-components';
 import Button from '@material-ui/core/Button'
 import {connect} from "react-redux"
-import {AxiosState} from "./store"
-import {AxiosInstance} from "axios"
-import {AxiosAction} from "./store/axios"
+import {IAxiosStore} from "./store"
+import {IAppActionProps, IAppStoreProps, IAppState, IAppProps} from "./env"
 import Child from './Child'
 import './App.scss'
 
@@ -17,18 +16,8 @@ const Wrapper = styled.div`
   }
 `
 
-interface IAppActionProps {
-  updateAxios: (species: 'DOG'|'CAT') => AxiosAction<string>
-}
-interface IAppProps {
-  axios: AxiosInstance,
-}
-interface IState {
-  animals: any[]
-}
-
-class App extends Component<IAppProps & IAppActionProps, IState> {
-  constructor(props: IAppProps & IAppActionProps) {
+class App extends Component<IAppProps, IAppState> {
+  constructor(props: IAppProps) {
     super(props);
     this.state = {
       animals: []
@@ -66,7 +55,7 @@ class App extends Component<IAppProps & IAppActionProps, IState> {
         </div>
         <Child/>
         <div className="hello">
-          Yes
+          Yes {this.props.a}
         </div>
         {
           this.state.animals.map(animal =>
@@ -84,7 +73,7 @@ class App extends Component<IAppProps & IAppActionProps, IState> {
   }
 }
 
-const mapStateToProps = (state: AxiosState): IAppProps => ({
+const mapStateToProps = (state: IAxiosStore): IAppStoreProps => ({
   axios: state.axios
 })
 const mapDispatchToProps: IAppActionProps = {

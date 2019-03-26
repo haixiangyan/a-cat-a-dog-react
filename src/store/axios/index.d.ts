@@ -1,10 +1,10 @@
 import {Action} from "redux"
 
-export interface AxiosAction<T> extends Action<T> {
+export interface IAxiosAction<T> extends Action<T> {
   payload: 'CAT'|'DOG'
 }
 
-export interface AxiosMapper {
+export interface IAxiosMapper {
   CAT: AxiosInstance
   DOG: AxiosInstance
   [key: string]: AxiosInstance

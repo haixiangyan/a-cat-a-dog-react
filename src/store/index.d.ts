@@ -1,5 +1,5 @@
 import {AxiosInstance} from "axios"
 
-export interface AxiosState {
+export interface IAxiosStore {
   axios: AxiosInstance
 }

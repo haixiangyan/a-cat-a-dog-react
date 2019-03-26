@@ -1,7 +1,7 @@
 import {UPDATE_AXIOS} from "../actionTypes"
-import {AxiosAction} from "./index"
+import {IAxiosAction} from "./index"
 
-export const updateAxios = (payload: 'CAT'|'DOG'): AxiosAction<string> => {
+export const updateAxios = (payload: 'CAT'|'DOG'): IAxiosAction<string> => {
   return {
     type: UPDATE_AXIOS,
     payload
