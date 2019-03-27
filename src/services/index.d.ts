@@ -47,3 +47,9 @@ interface IAddVoteData {
   sub_id: string
   value: number
 }
+
+// Breeds Service
+interface IGetBreedsParams {
+  limit: number
+  page: number
+}
