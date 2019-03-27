@@ -37,3 +37,13 @@ interface IAddFavouriteData {
   image_id: string
   sub_id: string
 }
+
+// Votes Service
+interface IGetVotesParams {
+  sub_id?: string
+}
+interface IAddVoteData {
+  image_id: string
+  sub_id: string
+  value: number
+}
