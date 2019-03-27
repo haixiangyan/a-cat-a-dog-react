@@ -53,3 +53,9 @@ interface IGetBreedsParams {
   limit: number
   page: number
 }
+
+// Sources Service
+interface IGetSourcesParams {
+  limit: number
+  page: number
+}
