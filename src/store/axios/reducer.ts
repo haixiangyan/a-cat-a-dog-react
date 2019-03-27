@@ -11,7 +11,6 @@ const mapper: IAxiosMapper = {
 const reducer = (state: AxiosInstance=catAxios, action: IAxiosAction<string>) => {
   switch (action.type) {
     case UPDATE_AXIOS:
-      console.log(mapper[action.payload])
       return mapper[action.payload]
     default:
       return state

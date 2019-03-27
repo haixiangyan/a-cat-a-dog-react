@@ -1,6 +1,10 @@
-import store from '../store/store'
+import store from "../store/store"
 
-const axios = store.getState().axios
+let axios = store.getState().axios
+
+store.subscribe(() => {
+  axios = store.getState().axios
+})
 
 export default {
   getBreeds: (params: IGetBreedsParams) => {

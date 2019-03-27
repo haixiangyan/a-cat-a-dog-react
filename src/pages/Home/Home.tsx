@@ -6,6 +6,7 @@ import {updateAxios} from "../../store/axios/actions"
 import imagesService from '../../services/images'
 // Styles
 import './styles'
+import {Button} from "@material-ui/core"
 
 class Home extends React.Component<IHomeProps, IHomeState> {
   constructor(props: IHomeProps) {
@@ -17,6 +18,9 @@ class Home extends React.Component<IHomeProps, IHomeState> {
 
   public async componentDidMount() {
     await this.props.updateAxios('DOG')
+  }
+
+  private initAnimal = async () => {
     const resources = await imagesService.getImages()
     this.setState({
       animals: resources
@@ -33,6 +37,7 @@ class Home extends React.Component<IHomeProps, IHomeState> {
             </div>
           )
         }
+        <Button onClick={this.initAnimal}>Start</Button>
       </div>
     )
   }
