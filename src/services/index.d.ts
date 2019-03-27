@@ -1,6 +1,6 @@
 // Image Service
 interface IGetImagesParams {
-  size?: string
+  size?: 'full'|'med'|'small'|'thumb'
   mime_types?: 'jpg'|'png'|'gif'
   format?: 'json'
   order?: 'RANDOM'|'ASC'|'DESC'
@@ -10,7 +10,7 @@ interface IGetImagesParams {
 }
 interface IGetImageByIdParams {
   sub_id?: string
-  size?: number
+  size?: 'full'|'med'|'small'|'thumb'
   include_vote?: string
   include_favourite?: string
 }
