@@ -4,7 +4,8 @@ import Fab from '@material-ui/core/Fab'
 
 export const Wrapper = styled.div`
   margin: 0 auto;
-  width: 400px;
+  width: 100%;
+  height: 100%;
 `
 export const ImageWrapper = styled.div`
   display: flex;
@@ -13,19 +14,23 @@ export const ImageWrapper = styled.div`
   width: 100%;
   height: 400px;
   overflow: hidden;
+  border-radius: 8px;
 `
 export const Image = styled.img`
   min-height: 100%;
   vertical-align: top;
+  border-radius: 8px;
 `
 export const ActionDiv = styled.div`
   display: flex;
+  margin-top: 16px;
+  justify-content: space-around;
+`
+export const NextButton = styled(Fab)` 
 `
 export const LoveButton = styled(Fab)`
   background: #20232a !important;
   color: #61dafb !important;
-`
-export const NextButton = styled(Fab)` 
 `
 export const StarButton = styled(Fab)` 
   background: #fadb14 !important;

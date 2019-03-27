@@ -43,12 +43,12 @@ class Home extends React.Component<IHomeProps, IHomeState> {
                 <LoveButton color="secondary">
                   <Icon>thumb_up</Icon>
                 </LoveButton>
-                <NextButton color="secondary">
-                  <Icon>close</Icon>
-                </NextButton>
                 <StarButton color="default">
                   <Icon>star</Icon>
                 </StarButton>
+                <NextButton color="secondary">
+                  <Icon>close</Icon>
+                </NextButton>
               </ActionDiv>
             </div>
           )

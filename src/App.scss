@@ -1,3 +1,17 @@
-.hello {
-  color: blue;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  .app-wrapper {
+    width: 370px;
+    height: 680px;
+    padding: 16px 8px;
+  }
 }
