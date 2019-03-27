@@ -10,7 +10,7 @@ import imagesService from '../../services/images'
 // Types
 import {IHomeActionProps, IHomeProps, IHomeState, IHomeStoreProps} from "./index"
 // Styles
-import {Wrapper, ImageWrapper, Image, ActionDiv, LoveButton, NextButton} from "./styles"
+import {Wrapper, ImageWrapper, Image, ActionDiv, LoveButton, NextButton, StarButton} from "./styles"
 
 class Home extends React.Component<IHomeProps, IHomeState> {
   constructor(props: IHomeProps) {
@@ -40,12 +40,15 @@ class Home extends React.Component<IHomeProps, IHomeState> {
                 <Image src={image.url} alt="Animal Image"/>
               </ImageWrapper>
               <ActionDiv>
-                <LoveButton variant="contained" color="secondary">
+                <LoveButton color="secondary">
                   <Icon>thumb_up</Icon>
                 </LoveButton>
-                <NextButton variant="contained" color="secondary">
+                <NextButton color="secondary">
                   <Icon>close</Icon>
                 </NextButton>
+                <StarButton color="default">
+                  <Icon>star</Icon>
+                </StarButton>
               </ActionDiv>
             </div>
           )
