@@ -1,6 +1,6 @@
 import * as React from 'react'
 // Material
-import Button from '@material-ui/core/Button'
+import Icon from '@material-ui/core/Icon'
 // Redux
 import {IAxiosStore} from "../../store"
 import {updateAxios} from "../../store/axios/actions"
@@ -10,7 +10,7 @@ import imagesService from '../../services/images'
 // Types
 import {IHomeActionProps, IHomeProps, IHomeState, IHomeStoreProps} from "./index"
 // Styles
-import classes from  './classes'
+import {Wrapper, ImageWrapper, Image, ActionDiv, LoveButton, NextButton} from "./styles"
 
 class Home extends React.Component<IHomeProps, IHomeState> {
   constructor(props: IHomeProps) {
@@ -21,7 +21,7 @@ class Home extends React.Component<IHomeProps, IHomeState> {
   }
 
   public async componentDidMount() {
-    await this.props.updateAxios('DOG')
+    await this.props.updateAxios('CAT')
 
     const resources = await imagesService.getImages()
     this.setState({
@@ -32,23 +32,25 @@ class Home extends React.Component<IHomeProps, IHomeState> {
   public render() {
     const {images} = this.state
     return (
-      <div>
+      <Wrapper>
         {
           images.map(image =>
             <div key={image.id}>
-              <img src={image.url} alt="Animal Image"/>
-              <div>
-                <Button variant="contained" color="secondary">
-                  LOVE
-                </Button>
-                <Button variant="contained" color="primary">
-                  PASS
-                </Button>
-              </div>
+              <ImageWrapper>
+                <Image src={image.url} alt="Animal Image"/>
+              </ImageWrapper>
+              <ActionDiv>
+                <LoveButton variant="contained" color="secondary">
+                  <Icon>thumb_up</Icon>
+                </LoveButton>
+                <NextButton variant="contained" color="secondary">
+                  <Icon>close</Icon>
+                </NextButton>
+              </ActionDiv>
             </div>
           )
         }
-      </div>
+      </Wrapper>
     )
   }
 }
