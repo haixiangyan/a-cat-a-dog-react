@@ -13,12 +13,12 @@ export default {
       .get(`/images/${imageId}`, {params})
       .then((response: any) => response.data)
   },
-  getUploadedImages: (params: IGetUploadedImages) => {
+  getUploadedImages: (params: IGetUploadedImagesParams) => {
     return axios
       .get(`/images`, {params})
       .then((response: any) => response.data)
   },
-  uploadImage: (data: IUploadImage) => {
+  uploadImage: (data: IUploadImageData) => {
     return axios
       .post(`/images/upload`, data)
       .then((response: any) => response.data)

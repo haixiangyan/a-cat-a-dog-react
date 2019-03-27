@@ -1,4 +1,4 @@
-// ImageServices
+// Image Service
 interface IGetImagesParams {
   size?: string
   mime_types?: 'jpg'|'png'|'gif'
@@ -14,7 +14,7 @@ interface IGetImageByIdParams {
   include_vote?: string
   include_favourite?: string
 }
-interface IGetUploadedImages {
+interface IGetUploadedImagesParams {
   limit?: number
   page?: number
   order?: 'DESC'|'ASC'
@@ -24,7 +24,16 @@ interface IGetUploadedImages {
   format?: 'json'
   original_filename?: string
 }
-interface IUploadImage {
+interface IUploadImageData {
   file: File
   sub_id?: string
+}
+
+// Favourites Service
+interface IGetFavouritesParams {
+  sub_id: string
+}
+interface IAddFavouriteData {
+  image_id: string
+  sub_id: string
 }
