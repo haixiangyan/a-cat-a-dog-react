@@ -1,5 +1,6 @@
 import {IAxiosAction} from "./store/axios"
 import {AxiosInstance} from "axios"
+import {IImage} from "../../env"
 
 export interface IHomeActionProps {
   updateAxios: (species: 'DOG'|'CAT') => IAxiosAction<string>
@@ -11,5 +12,5 @@ export interface IHomeProps extends IHomeActionProps, IHomeStoreProps{
   a?:string
 }
 export interface IHomeState {
-  animals: any[]
+  images: Array<IImage>
 }

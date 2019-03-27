@@ -1,43 +1,53 @@
 import * as React from 'react'
-import {connect} from "react-redux"
-import {IHomeActionProps, IHomeProps, IHomeState, IHomeStoreProps} from "./index"
+// Material
+import Button from '@material-ui/core/Button'
+// Redux
 import {IAxiosStore} from "../../store"
 import {updateAxios} from "../../store/axios/actions"
+import {connect} from "react-redux"
+// Services
 import imagesService from '../../services/images'
+// Types
+import {IHomeActionProps, IHomeProps, IHomeState, IHomeStoreProps} from "./index"
 // Styles
-import './styles'
-import {Button} from "@material-ui/core"
+import classes from  './classes'
 
 class Home extends React.Component<IHomeProps, IHomeState> {
   constructor(props: IHomeProps) {
     super(props);
     this.state = {
-      animals: []
+      images: []
     }
   }
 
   public async componentDidMount() {
     await this.props.updateAxios('DOG')
-  }
 
-  private initAnimal = async () => {
     const resources = await imagesService.getImages()
     this.setState({
-      animals: resources
+      images: resources
     })
   }
 
   public render() {
+    const {images} = this.state
     return (
       <div>
         {
-          this.state.animals.map(animal =>
-            <div key={animal.id}>
-              <img src={animal.url} alt="animalImg"/>
+          images.map(image =>
+            <div key={image.id}>
+              <img src={image.url} alt="Animal Image"/>
+              <div>
+                <Button variant="contained" color="secondary">
+                  LOVE
+                </Button>
+                <Button variant="contained" color="primary">
+                  PASS
+                </Button>
+              </div>
             </div>
           )
         }
-        <Button onClick={this.initAnimal}>Start</Button>
       </div>
     )
   }
