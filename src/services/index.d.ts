@@ -3,7 +3,7 @@ interface IGetImagesParams {
   size?: string
   mime_types?: 'jpg'|'png'|'gif'
   format?: 'json'
-  order?: 'RANDOM'
+  order?: 'RANDOM'|'ASC'|'DESC'
   page?: number
   limit?: number
   category_ids?: string
