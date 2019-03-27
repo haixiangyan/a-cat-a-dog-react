@@ -1,7 +1,7 @@
 // Image Service
 interface IGetImagesParams {
   size?: 'full'|'med'|'small'|'thumb'
-  mime_types?: 'jpg'|'png'|'gif'
+  mime_types?: 'jpg'|'png'|'gif'|'jpg,gif,png'
   format?: 'json'
   order?: 'RANDOM'|'ASC'|'DESC'
   page?: number
