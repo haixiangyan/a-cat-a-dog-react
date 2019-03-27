@@ -1,20 +1,33 @@
 import styled from 'styled-components'
-import Button from '@material-ui/core/Button'
+import IconButton from '@material-ui/core/IconButton'
 import Fab from '@material-ui/core/Fab'
 
 export const Wrapper = styled.div`
   margin: 0 auto;
   width: 100%;
-  height: 100%;
+`
+
+export const Header = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  color: #20232a;
+  font-size: 1.2em;
+`
+export const UserButton = styled(IconButton)`
+
+`
+export const SettingButton = styled(IconButton)`
 `
 export const ImageWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 400px;
+  height: 520px;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 12px;
 `
 export const Image = styled.img`
   min-height: 100%;
