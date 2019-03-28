@@ -18,7 +18,7 @@ import {
   Wrapper,
   Header, UserButton, SettingButton,
   ImageWrapper, Image,
-  ActionDiv, LoveButton, NextButton, StarButton, UploadButton, AnalyzeButton
+  ActionDiv, VoteButton, NextButton, FavouriteButton, UploadButton, AnalyzeButton
 } from "./styles"
 import {
   ICategory,
@@ -74,6 +74,18 @@ class Home extends React.Component<IHomeProps, IHomeState> {
     console.log(sources, 'ss')
   }
 
+  private vote = async () => {
+    await votesService.addVote({
+      sub_id: 'hai_test',
+      image_id: this.state.images[0].id,
+      value: 1
+    })
+  }
+
+  private uploadImage = async () => {
+
+  }
+
   private updateImage = async () => {
     const images: Array<IImage> = await imagesService.getImages()
     this.setState({
@@ -85,14 +97,6 @@ class Home extends React.Component<IHomeProps, IHomeState> {
     await favouritesService.addFavourite({
       sub_id: 'hai_test',
       image_id: this.state.images[0].id
-    })
-  }
-
-  private vote = async () => {
-    await votesService.addVote({
-      sub_id: 'hai_test',
-      image_id: this.state.images[0].id,
-      value: 1
     })
   }
 
@@ -117,9 +121,9 @@ class Home extends React.Component<IHomeProps, IHomeState> {
                 <Image src={image.url} alt="Animal Image"/>
               </ImageWrapper>
               <ActionDiv>
-                <LoveButton color="primary" onClick={this.vote}> <Icon fontSize="large">thumb_up</Icon> </LoveButton>
+                <VoteButton color="primary" onClick={this.vote}> <Icon fontSize="large">thumb_up</Icon> </VoteButton>
                 <UploadButton><Icon>cloud_upload</Icon></UploadButton>
-                <StarButton onClick={this.favourite}> <Icon fontSize="large">star</Icon> </StarButton>
+                <FavouriteButton onClick={this.favourite}> <Icon fontSize="large">star</Icon> </FavouriteButton>
                 <AnalyzeButton><Icon>show_chart</Icon></AnalyzeButton>
                 <NextButton color="secondary" onClick={this.updateImage}> <Icon fontSize="large">arrow_forward_ios</Icon> </NextButton>
               </ActionDiv>

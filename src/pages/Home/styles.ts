@@ -40,12 +40,12 @@ export const ActionDiv = styled.div`
   justify-content: space-around;
   border-top: 1px solid #ddd;
 `
-export const LoveButton = styled(IconButton)`
+export const VoteButton = styled(IconButton)`
 `
 export const UploadButton = styled(IconButton)`
   color: #61dafb !important;
 `
-export const StarButton = styled(IconButton)` 
+export const FavouriteButton = styled(IconButton)` 
   color: #fadb14 !important;
 `
 export const AnalyzeButton = styled(IconButton)`
