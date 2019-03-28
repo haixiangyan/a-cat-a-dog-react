@@ -1,5 +1,6 @@
 import store from "../store/store"
 import {IGetBreedsParams} from "./index"
+import {AxiosResponse} from "axios"
 
 let axios = store.getState().axios
 
@@ -10,12 +11,14 @@ store.subscribe(() => {
 export default {
   getBreeds: (params: IGetBreedsParams) => {
     return axios
-      .get(`/breeds`)
-      .then((response: any) => response.data)
+      .get(`/breeds`, {
+        params
+      })
+      .then((response: AxiosResponse) => response.data)
   },
   getBreedById: (breedId: string) => {
     return axios
       .get(`/breeds/${breedId}`)
-      .then((response: any) => response.data)
+      .then((response: AxiosResponse) => response.data)
   }
 }

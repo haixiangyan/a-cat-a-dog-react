@@ -1,4 +1,5 @@
 import store from "../store/store"
+import {AxiosResponse} from "axios"
 
 let axios = store.getState().axios
 
@@ -10,6 +11,6 @@ export default {
   getCategories: () => {
     return axios
       .get(`/categories`)
-      .then((response: any) => response.data)
+      .then((response: AxiosResponse) => response.data)
   }
 }

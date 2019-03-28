@@ -1,71 +1,67 @@
 // Image Service
-import {AxiosResponse} from "axios"
-import {IImage} from "../env"
-
-interface IGetImagesParams {
-  size?: 'full'|'med'|'small'|'thumb'
-  mime_types?: 'jpg'|'png'|'gif'|'jpg,gif,png'
+export interface IGetImagesParams {
+  size?: 'full' | 'med' | 'small' | 'thumb'
+  mime_types?: 'jpg' | 'png' | 'gif' | 'jpg,gif,png'
   format?: 'json'
-  order?: 'RANDOM'|'ASC'|'DESC'
+  order?: 'RANDOM' | 'ASC' | 'DESC'
   page?: number
   limit?: number
   category_ids?: string
 }
-interface IGetImageByIdParams {
+
+export interface IGetImageByIdParams {
   sub_id?: string
-  size?: 'full'|'med'|'small'|'thumb'
+  size?: 'full' | 'med' | 'small' | 'thumb'
   include_vote?: string
   include_favourite?: string
 }
-interface IGetUploadedImagesParams {
+
+export interface IGetUploadedImagesParams {
   limit?: number
   page?: number
-  order?: 'DESC'|'ASC'
+  order?: 'DESC' | 'ASC'
   sub_id?: string
   breed_ids?: string
   category_ids?: string
   format?: 'json'
   original_filename?: string
 }
-interface IUploadImageData {
+
+export interface IUploadImageData {
   file: File
   sub_id?: string
 }
 
-interface IImagesResponse extends AxiosResponse{
-  data: Array<IImage>
-}
-interface IImageResponse extends AxiosResponse{
-  data: IImage
-}
-
 // Favourites Service
-interface IGetFavouritesParams {
+export interface IGetFavouritesParams {
   sub_id: string
 }
-interface IAddFavouriteData {
+
+export interface IAddFavouriteData {
   image_id: string
   sub_id: string
 }
 
 // Votes Service
-interface IGetVotesParams {
+export interface IGetVotesParams {
   sub_id?: string
 }
-interface IAddVoteData {
+
+export interface IAddVoteData {
   image_id: string
   sub_id: string
   value: number
 }
 
 // Breeds Service
-interface IGetBreedsParams {
-  limit: number
-  page: number
+export interface IGetBreedsParams {
+  limit?: number
+  page?: number
 }
 
+
 // Sources Service
-interface IGetSourcesParams {
-  limit: number
-  page: number
+export interface IGetSourcesParams {
+  limit?: number
+  page?: number
 }
