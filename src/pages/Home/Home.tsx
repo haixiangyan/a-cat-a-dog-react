@@ -42,6 +42,8 @@ class Home extends React.Component<IHomeProps, IHomeState> {
 
   public async componentDidMount() {
     await this.updateImage()
+    console.log(this.props.breeds, 'breeds')
+    console.log(this.props.categories, 'categories')
     console.log(this.state.images[0])
     const analysis: Array<IImageAnalysis> = await imagesService.analyzeImage(this.state.images[0].id)
     console.log(analysis, 'a')
@@ -130,7 +132,8 @@ class Home extends React.Component<IHomeProps, IHomeState> {
 
 const mapStateToProps = (state: IStore) => ({
   axios: state.axios,
-  breeds: state.breeds
+  breeds: state.breeds,
+  categories: state.categories
 })
 const mapDispatchToProps: IHomeActionProps = {
 }
