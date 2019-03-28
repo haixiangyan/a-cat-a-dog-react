@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import IconButton from '@material-ui/core/IconButton'
-import Fab from '@material-ui/core/Fab'
 
 export const Wrapper = styled.div`
   margin: 0 auto;
@@ -25,24 +24,32 @@ export const ImageWrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 520px;
+  height: 510px;
   overflow: hidden;
   border-radius: 12px;
 `
 export const Image = styled.img`
-  min-height: 100%;
+  width: 100%;
   vertical-align: top;
   border-radius: 8px;
 `
 export const ActionDiv = styled.div`
-  display: flex;
   margin-top: 16px;
+  display: flex;
+  align-items: center;
   justify-content: space-around;
+  border-top: 1px solid #ddd;
 `
 export const LoveButton = styled(IconButton)`
 `
+export const UploadButton = styled(IconButton)`
+  color: #61dafb !important;
+`
 export const StarButton = styled(IconButton)` 
   color: #fadb14 !important;
+`
+export const AnalyzeButton = styled(IconButton)`
+  color: #20232a !important;
 `
 export const NextButton = styled(IconButton)` 
 `

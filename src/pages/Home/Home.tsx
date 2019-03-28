@@ -18,7 +18,7 @@ import {
   Wrapper,
   Header, UserButton, SettingButton,
   ImageWrapper, Image,
-  ActionDiv, LoveButton, NextButton, StarButton
+  ActionDiv, LoveButton, NextButton, StarButton, UploadButton, AnalyzeButton
 } from "./styles"
 import {
   ICategory,
@@ -118,9 +118,11 @@ class Home extends React.Component<IHomeProps, IHomeState> {
                 <Image src={image.url} alt="Animal Image"/>
               </ImageWrapper>
               <ActionDiv>
-                <LoveButton color="primary" onClick={this.vote}> <Icon>thumb_up</Icon> </LoveButton>
-                <StarButton onClick={this.favourite}> <Icon>star</Icon> </StarButton>
-                <NextButton color="secondary"> <Icon>close</Icon> </NextButton>
+                <LoveButton color="primary" onClick={this.vote}> <Icon fontSize="large">thumb_up</Icon> </LoveButton>
+                <UploadButton><Icon>cloud_upload</Icon></UploadButton>
+                <StarButton onClick={this.favourite}> <Icon fontSize="large">star</Icon> </StarButton>
+                <AnalyzeButton><Icon>show_chart</Icon></AnalyzeButton>
+                <NextButton color="secondary"> <Icon fontSize="large">close</Icon> </NextButton>
               </ActionDiv>
             </div>
           )
