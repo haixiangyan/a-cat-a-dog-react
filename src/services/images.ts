@@ -1,4 +1,10 @@
 import store from "../store/store"
+import {
+  IGetImageByIdParams,
+  IGetImagesParams,
+  IGetUploadedImagesParams, IImagesResponse,
+  IUploadImageData
+} from "./index"
 
 let axios = store.getState().axios
 
@@ -10,7 +16,7 @@ export default {
   getImages: (params?: IGetImagesParams) => {
     return axios
       .get(`/images/search`, {params})
-      .then((response: any) => response.data)
+      .then((response: IImagesResponse) => response.data)
   },
   getImageById: (imageId: string, params: IGetImageByIdParams) => {
     return axios

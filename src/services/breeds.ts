@@ -1,4 +1,5 @@
 import store from "../store/store"
+import {IGetBreedsParams} from "./index"
 
 let axios = store.getState().axios
 

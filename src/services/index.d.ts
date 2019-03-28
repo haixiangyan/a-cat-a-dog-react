@@ -1,4 +1,7 @@
 // Image Service
+import {AxiosResponse} from "axios"
+import {IImage} from "../env"
+
 interface IGetImagesParams {
   size?: 'full'|'med'|'small'|'thumb'
   mime_types?: 'jpg'|'png'|'gif'|'jpg,gif,png'
@@ -27,6 +30,13 @@ interface IGetUploadedImagesParams {
 interface IUploadImageData {
   file: File
   sub_id?: string
+}
+
+interface IImagesResponse extends AxiosResponse{
+  data: Array<IImage>
+}
+interface IImageResponse extends AxiosResponse{
+  data: IImage
 }
 
 // Favourites Service

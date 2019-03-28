@@ -1,4 +1,5 @@
 import store from "../store/store"
+import {IGetSourcesParams} from "./index"
 
 let axios = store.getState().axios
 

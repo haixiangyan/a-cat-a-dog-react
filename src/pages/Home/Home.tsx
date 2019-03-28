@@ -1,7 +1,6 @@
 import * as React from 'react'
 // Material
 import Icon from '@material-ui/core/Icon'
-import IconButton from '@material-ui/core/IconButton'
 // Redux
 import {IAxiosStore} from "../../store"
 import {updateAxios} from "../../store/axios/actions"
@@ -17,6 +16,7 @@ import {
   ImageWrapper, Image,
   ActionDiv, LoveButton, NextButton, StarButton
 } from "./styles"
+import {IImage} from "../../env"
 
 class Home extends React.Component<IHomeProps, IHomeState> {
   constructor(props: IHomeProps) {
@@ -29,9 +29,10 @@ class Home extends React.Component<IHomeProps, IHomeState> {
   public async componentDidMount() {
     await this.props.updateAxios('CAT')
 
-    const resources = await imagesService.getImages()
+    const imagesData: Array<IImage> = await imagesService.getImages()
+    console.log(imagesData)
     this.setState({
-      images: resources
+      images: imagesData
     })
   }
 
