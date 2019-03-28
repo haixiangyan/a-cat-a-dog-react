@@ -30,7 +30,6 @@ import {
   IVote,
   IVotesElement
 } from "../../env"
-import {updateAxios} from "../../store/axios/actions"
 
 class Home extends React.Component<IHomeProps, IHomeState> {
   constructor(props: IHomeProps) {
@@ -122,7 +121,7 @@ class Home extends React.Component<IHomeProps, IHomeState> {
                 <UploadButton><Icon>cloud_upload</Icon></UploadButton>
                 <StarButton onClick={this.favourite}> <Icon fontSize="large">star</Icon> </StarButton>
                 <AnalyzeButton><Icon>show_chart</Icon></AnalyzeButton>
-                <NextButton color="secondary"> <Icon fontSize="large">close</Icon> </NextButton>
+                <NextButton color="secondary" onClick={this.updateImage}> <Icon fontSize="large">arrow_forward_ios</Icon> </NextButton>
               </ActionDiv>
             </div>
           )
