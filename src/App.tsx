@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route} from "react-router-dom"
+// Redux
 // Material UI
 import Card from '@material-ui/core/Card'
 // Pages
@@ -11,7 +12,7 @@ import Favourite from './pages/Favourite/Favourtie'
 import './App.scss'
 
 class App extends Component {
-  render() {
+  public render() {
     return (
       <Router>
         <Card className="app-wrapper">
