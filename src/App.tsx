@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route} from "react-router-dom"
 // Redux
+import {initBreeds} from "./store/breeds/actions"
 // Material UI
 import Card from '@material-ui/core/Card'
 // Pages
@@ -10,8 +11,22 @@ import Vote from './pages/Vote/Vote'
 import Favourite from './pages/Favourite/Favourtie'
 // App Styles
 import './App.scss'
+import {connect} from "react-redux"
+import {IAppActionProps, IAppProps, IBreed} from "./env"
+// Services
+import breedsService from './services/breeds'
+import {IStore} from "./store"
 
-class App extends Component {
+class App extends Component<IAppProps> {
+  constructor(props: IAppProps) {
+    super(props)
+  }
+
+  public async componentDidMount() {
+    const breeds = await breedsService.getBreeds()
+    this.props.initBreeds(breeds)
+  }
+
   public render() {
     return (
       <Router>
@@ -26,5 +41,12 @@ class App extends Component {
   }
 }
 
+const mapStateToProps = (state: IStore) => ({})
+const mapDispatchToProps: IAppActionProps = {
+  initBreeds
+}
 
-export default App;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

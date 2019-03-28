@@ -1,3 +1,5 @@
+import {IBreedsAction} from "./store/breeds"
+
 export interface IImage {
   id: string
   url: string
@@ -109,4 +111,10 @@ export interface ISource {
   id: string
   name: string
   url: string
+}
+
+export interface IAppActionProps {
+  initBreeds: (payload: Array<IBreed>) => IBreedsAction
+}
+export interface IAppProps extends IAppActionProps{
 }

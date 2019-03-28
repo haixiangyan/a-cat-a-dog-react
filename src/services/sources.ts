@@ -9,7 +9,7 @@ store.subscribe(() => {
 })
 
 export default {
-  getSources: (params: IGetSourcesParams) => {
+  getSources: (params?: IGetSourcesParams) => {
     return axios
       .get(`/sources`, {params})
       .then((response: AxiosResponse) => response.data)

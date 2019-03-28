@@ -2,7 +2,7 @@ import * as React from 'react'
 // Material
 import Icon from '@material-ui/core/Icon'
 // Redux
-import {IAxiosStore} from "../../store"
+import {IStore} from "../../store"
 import {updateAxios} from "../../store/axios/actions"
 import {connect} from "react-redux"
 // Services
@@ -13,7 +13,7 @@ import breedsService from '../../services/breeds'
 import categoriesService from '../../services/categories'
 import sourcesService from '../../services/sources'
 // Types
-import {IHomeActionProps, IHomeProps, IHomeState, IHomeStoreProps} from "./index"
+import {IHomeActionProps, IHomeProps, IHomeState} from "./index"
 // Styles
 import {
   Wrapper,
@@ -95,6 +95,7 @@ class Home extends React.Component<IHomeProps, IHomeState> {
 
   public render() {
     const {images} = this.state
+    console.log(this.props.breeds)
     return (
       <Wrapper>
         {
@@ -131,8 +132,9 @@ class Home extends React.Component<IHomeProps, IHomeState> {
   }
 }
 
-const mapStateToProps = (state: IAxiosStore): IHomeStoreProps => ({
-  axios: state.axios
+const mapStateToProps = (state: IStore) => ({
+  axios: state.axios,
+  breeds: state.breeds
 })
 const mapDispatchToProps: IHomeActionProps = {
   updateAxios

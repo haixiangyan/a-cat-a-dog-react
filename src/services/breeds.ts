@@ -9,7 +9,7 @@ store.subscribe(() => {
 })
 
 export default {
-  getBreeds: (params: IGetBreedsParams) => {
+  getBreeds: (params?: IGetBreedsParams) => {
     return axios
       .get(`/breeds`, {
         params

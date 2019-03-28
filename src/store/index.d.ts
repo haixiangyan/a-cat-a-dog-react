@@ -1,5 +1,7 @@
 import {AxiosInstance} from "axios"
+import {IBreed} from "../env"
 
-export interface IAxiosStore {
-  axios: AxiosInstance
+export interface IStore {
+  axios: AxiosInstance,
+  breeds: Array<IBreed>
 }

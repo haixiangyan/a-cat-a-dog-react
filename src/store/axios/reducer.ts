@@ -8,7 +8,7 @@ const mapper: IAxiosMapper = {
   DOG: dogAxios
 }
 
-const reducer = (state: AxiosInstance=catAxios, action: IAxiosAction<string>) => {
+const reducer = (state: AxiosInstance=catAxios, action: IAxiosAction) => {
   switch (action.type) {
     case UPDATE_AXIOS:
       return mapper[action.payload]
