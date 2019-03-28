@@ -1,6 +1,6 @@
 import {Action} from "redux"
 
-export interface IAxiosAction<T> extends Action<T> {
+export interface IAxiosAction extends Action<string> {
   payload: 'CAT'|'DOG'
 }
 
