@@ -39,13 +39,10 @@ export const ActionDiv = styled.div`
   margin-top: 16px;
   justify-content: space-around;
 `
-export const NextButton = styled(Fab)` 
+export const LoveButton = styled(IconButton)`
 `
-export const LoveButton = styled(Fab)`
-  background: #20232a !important;
-  color: #61dafb !important;
+export const StarButton = styled(IconButton)` 
+  color: #fadb14 !important;
 `
-export const StarButton = styled(Fab)` 
-  background: #fadb14 !important;
-  color: white !important;
+export const NextButton = styled(IconButton)` 
 `

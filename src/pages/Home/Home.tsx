@@ -3,7 +3,6 @@ import * as React from 'react'
 import Icon from '@material-ui/core/Icon'
 // Redux
 import {IStore} from "../../store"
-import {updateAxios} from "../../store/axios/actions"
 import {connect} from "react-redux"
 // Services
 import imagesService from '../../services/images'
@@ -31,6 +30,7 @@ import {
   IVote,
   IVotesElement
 } from "../../env"
+import {updateAxios} from "../../store/axios/actions"
 
 class Home extends React.Component<IHomeProps, IHomeState> {
   constructor(props: IHomeProps) {
@@ -41,12 +41,10 @@ class Home extends React.Component<IHomeProps, IHomeState> {
   }
 
   public async componentDidMount() {
-    await this.props.updateAxios('CAT')
-
-    const images: Array<IImage> = await imagesService.getImages()
-    console.log(images[0])
-    const analysis: Array<IImageAnalysis> = await imagesService.analyzeImage(images[0].id)
-    console.log(analysis)
+    await this.updateImage()
+    console.log(this.state.images[0])
+    const analysis: Array<IImageAnalysis> = await imagesService.analyzeImage(this.state.images[0].id)
+    console.log(analysis, 'a')
     const votes: Array<IVotesElement> = await votesService.getVotes({
       sub_id: 'hai_test'
     })
@@ -73,6 +71,10 @@ class Home extends React.Component<IHomeProps, IHomeState> {
       page: 1
     })
     console.log(sources, 'ss')
+  }
+
+  private updateImage = async () => {
+    const images: Array<IImage> = await imagesService.getImages()
     this.setState({
       images
     })
@@ -114,15 +116,9 @@ class Home extends React.Component<IHomeProps, IHomeState> {
                 <Image src={image.url} alt="Animal Image"/>
               </ImageWrapper>
               <ActionDiv>
-                <LoveButton onClick={this.vote} color="secondary">
-                  <Icon>thumb_up</Icon>
-                </LoveButton>
-                <StarButton onClick={this.favourite} color="default">
-                  <Icon>star</Icon>
-                </StarButton>
-                <NextButton color="secondary">
-                  <Icon>close</Icon>
-                </NextButton>
+                <LoveButton color="primary" onClick={this.vote}> <Icon>thumb_up</Icon> </LoveButton>
+                <StarButton onClick={this.favourite}> <Icon>star</Icon> </StarButton>
+                <NextButton color="secondary"> <Icon>close</Icon> </NextButton>
               </ActionDiv>
             </div>
           )
@@ -137,7 +133,6 @@ const mapStateToProps = (state: IStore) => ({
   breeds: state.breeds
 })
 const mapDispatchToProps: IHomeActionProps = {
-  updateAxios
 }
 
 export default connect(

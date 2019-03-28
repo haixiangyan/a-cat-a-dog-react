@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route} from "react-router-dom"
 // Redux
+import {updateAxios} from "./store/axios/actions"
 import {initBreeds} from "./store/breeds/actions"
 // Material UI
 import Card from '@material-ui/core/Card'
@@ -12,7 +13,7 @@ import Favourite from './pages/Favourite/Favourtie'
 // App Styles
 import './App.scss'
 import {connect} from "react-redux"
-import {IAppActionProps, IAppProps, IBreed} from "./env"
+import {IAppActionProps, IAppProps} from "./env"
 // Services
 import breedsService from './services/breeds'
 import {IStore} from "./store"
@@ -23,6 +24,9 @@ class App extends Component<IAppProps> {
   }
 
   public async componentDidMount() {
+    // Init animal type
+    this.props.updateAxios('CAT')
+    // Init a breed list
     const breeds = await breedsService.getBreeds()
     this.props.initBreeds(breeds)
   }
@@ -43,7 +47,8 @@ class App extends Component<IAppProps> {
 
 const mapStateToProps = (state: IStore) => ({})
 const mapDispatchToProps: IAppActionProps = {
-  initBreeds
+  initBreeds,
+  updateAxios
 }
 
 export default connect(

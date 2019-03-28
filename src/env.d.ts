@@ -1,4 +1,6 @@
 import {IBreedsAction} from "./store/breeds"
+import {AxiosInstance} from "axios"
+import {IAxiosAction} from "./store/axios"
 
 export interface IImage {
   id: string
@@ -115,6 +117,7 @@ export interface ISource {
 
 export interface IAppActionProps {
   initBreeds: (payload: Array<IBreed>) => IBreedsAction
+  updateAxios: (payload: 'CAT'|'DOG') => IAxiosAction
 }
 export interface IAppProps extends IAppActionProps{
 }
