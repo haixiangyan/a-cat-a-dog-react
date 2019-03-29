@@ -13,7 +13,17 @@ import favouritesService from '../../services/faviourites'
 // Types
 import {IHomeActionProps, IHomeProps, IHomeState} from "./index"
 // Styles
-import { Wrapper, ImageWrapper, Image, ActionDiv, VoteButton, NextButton, FavouriteButton, UploadButton, AnalyzeButton } from "./styles"
+import {
+  ActionDiv,
+  AnalyzeButton,
+  FavouriteButton,
+  Image,
+  ImageWrapper,
+  NextButton,
+  UploadButton,
+  VoteButton,
+  Wrapper
+} from "./styles"
 // Types
 import {IImage} from "../../env"
 import {AxiosResponse} from "axios"
@@ -28,7 +38,8 @@ class Home extends React.Component<IHomeProps, IHomeState> {
       images: [],
       imageInput: React.createRef(),
       isOpenMsg: false,
-      msg: ''
+      msg: '',
+      isOpenAnalysis: false
     }
   }
 
@@ -73,6 +84,12 @@ class Home extends React.Component<IHomeProps, IHomeState> {
     this.setState({ images })
   }
 
+  private toggleAnalysisCollapse = async () => {
+    await this.setState({isOpenAnalysis: !this.state.isOpenAnalysis})
+    const wrapper = document.querySelector('#app-wrapper')
+    wrapper && wrapper.scroll(0, 9999)
+  }
+
   private favourite = async () => {
     await favouritesService.addFavourite({
       sub_id: 'hai_test',
@@ -82,9 +99,9 @@ class Home extends React.Component<IHomeProps, IHomeState> {
   }
 
   public render() {
-    const {images, imageInput, isOpenMsg, msg} = this.state
+    const {images, imageInput, isOpenMsg, msg, isOpenAnalysis} = this.state
     return (
-      <Wrapper>
+      <Wrapper id="home-wrapper">
         {
           images.map(image =>
             <div key={image.id}>
@@ -99,10 +116,15 @@ class Home extends React.Component<IHomeProps, IHomeState> {
                   <UploadButton component="span"><Icon>cloud_upload</Icon></UploadButton>
                 </label>
                 <FavouriteButton onClick={this.favourite}> <Icon fontSize="large">star</Icon> </FavouriteButton>
-                <AnalyzeButton><Icon>show_chart</Icon></AnalyzeButton>
+                <AnalyzeButton onClick={this.toggleAnalysisCollapse}><Icon>show_chart</Icon></AnalyzeButton>
                 <NextButton color="secondary" onClick={this.updateImage}> <Icon fontSize="large">arrow_forward_ios</Icon> </NextButton>
               </ActionDiv>
-
+              {
+                isOpenAnalysis &&
+                <div>
+                  Hello
+                </div>
+              }
               <Snackbar open={isOpenMsg} TransitionComponent={TransitionUp} onClose={this.onCloseMsg} message={msg}/>
             </div>
           )

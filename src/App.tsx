@@ -39,7 +39,7 @@ class App extends Component<IAppProps> {
   public render() {
     return (
       <Router>
-        <Card className="app-wrapper">
+        <Card id="app-wrapper" className="app-wrapper">
           <Route path="/" exact={true} component={Home}/>
           <Route path="/setting" component={Setting}/>
           <Route path="/votes" component={Votes}/>

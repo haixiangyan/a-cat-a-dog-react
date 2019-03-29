@@ -14,5 +14,6 @@ export interface IHomeState {
   images: Array<IImage>
   imageInput: React.RefObject<HTMLInputElement>
   isOpenMsg: boolean
+  isOpenAnalysis: boolean
   msg: string
 }
