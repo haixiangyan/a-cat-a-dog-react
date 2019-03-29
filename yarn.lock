@@ -1066,6 +1066,13 @@
   resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-2.2.7.tgz#fb68cc9be8487e6ea5b13700e759bfbab7e0fefd"
   integrity sha512-rzOhiQ55WzAiFgXRtitP/ZUT8iVNyllEpylJ5zHzR4vArUvMB39GTk+Zon/uAM0JxEFAWnwsxC2gH8s+tZ3Myg==
 
+"@types/echarts@^4.1.8":
+  version "4.1.8"
+  resolved "https://registry.yarnpkg.com/@types/echarts/-/echarts-4.1.8.tgz#ee0b3e53606fb44680c32b1426f5bf44c8120e5a"
+  integrity sha512-Ivpe02MZ4Em2Cj535d/7ftTNu7G3Fgfau+pH5uq49xxF8BADhtWznAg245+l0e7plMLVNeylydmcMPUh/czuzw==
+  dependencies:
+    "@types/zrender" "*"
+
 "@types/history@*", "@types/history@^4.7.2":
   version "4.7.2"
   resolved "https://registry.yarnpkg.com/@types/history/-/history-4.7.2.tgz#0e670ea254d559241b6eeb3894f8754991e73220"
@@ -1216,6 +1223,11 @@
     "@types/node" "*"
     "@types/unist" "*"
     "@types/vfile-message" "*"
+
+"@types/zrender@*":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@types/zrender/-/zrender-4.0.0.tgz#a6806f12ec4eccaaebd9b0d816f049aca6188fbd"
+  integrity sha512-s89GOIeKFiod2KSqHkfd2rzx+T2DVu7ihZCBEBnhFrzvQPUmzvDSBot9Fi1DfMQm9Odg+rTqoMGC38RvrwJK2w==
 
 "@webassemblyjs/ast@1.7.11":
   version "1.7.11"
@@ -3580,6 +3592,13 @@ ecc-jsbn@~0.1.1:
   dependencies:
     jsbn "~0.1.0"
     safer-buffer "^2.1.0"
+
+echarts@^4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/echarts/-/echarts-4.2.1.tgz#9a8ea3b03354f86f824d97625c334cf16965ef03"
+  integrity sha512-pw4xScRPsLegD/cqEcoXRKeA2SD4+s+Kyo0Na166NamOWhzNl2yI5RZ2rE97tBlAopNmhyMeBVpAeD5qb+ee1A==
+  dependencies:
+    zrender "4.0.7"
 
 ee-first@1.1.1:
   version "1.1.1"
@@ -11163,3 +11182,8 @@ yargs@^7.0.0:
     which-module "^1.0.0"
     y18n "^3.2.1"
     yargs-parser "^5.0.0"
+
+zrender@4.0.7:
+  version "4.0.7"
+  resolved "https://registry.yarnpkg.com/zrender/-/zrender-4.0.7.tgz#15ae960822f5efed410995d37e5107fe3de10e6d"
+  integrity sha512-TNloHe0ums6zxbHfnaCryM61J4IWDajZwNq6dHk9vfWhhysO/OeFvvR0drBs/nbXha2YxSzfQj2FiCd6RVBe+Q==
