@@ -1,6 +1,6 @@
 import {IAxiosAction} from "./store/axios"
 import {AxiosInstance} from "axios"
-import {IBreed, ICategory, IImage} from "../../env"
+import {IBreed, ICategory, IImage, IImageAnalysis} from "../../env"
 import * as React from "react"
 
 export interface IHomeActionProps {
@@ -16,4 +16,5 @@ export interface IHomeState {
   isOpenMsg: boolean
   isOpenAnalysis: boolean
   msg: string
+  imageAnalysis: Array<IImageAnalysis>
 }

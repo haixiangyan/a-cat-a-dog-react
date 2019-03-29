@@ -1,5 +1,4 @@
 import {IBreedsAction} from "./store/breeds"
-import {AxiosInstance} from "axios"
 import {IAxiosAction} from "./store/axios"
 import {ICategoriesAction} from "./store/categories"
 
