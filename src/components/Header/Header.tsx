@@ -1,4 +1,6 @@
 import * as React from 'react'
+// Router
+import {withRouter} from "react-router-dom"
 // Material UI
 import Icon from '@material-ui/core/Icon'
 import Button from "@material-ui/core/Button"
@@ -42,6 +44,7 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
 
   public render() {
     const {isOpenUser, userEl, isOpenSetting, settingEl} = this.state
+    const {history} = this.props
     return (
       <Wrapper>
         <UserButton onClick={this.toggleUser}> <Icon>person</Icon> </UserButton>
@@ -54,9 +57,9 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
               <Paper>
                 <ClickAwayListener onClickAway={this.toggleSetting}>
                   <MenuList>
-                    <MenuItem><Link to="/setting">General Setting</Link></MenuItem>
-                    <MenuItem><Link to="/votes">Voted Images</Link></MenuItem>
-                    <MenuItem><Link to="/favourites">Favourite Images</Link></MenuItem>
+                    <MenuItem onClick={() => history.push('/setting')}>General Setting</MenuItem>
+                    <MenuItem onClick={() => history.push('/votes')}>Voted Images</MenuItem>
+                    <MenuItem onClick={() => history.push('/favourites')}>Favourite Images</MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>
@@ -78,4 +81,4 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
   }
 }
 
-export default Header
+export default withRouter(Header)
