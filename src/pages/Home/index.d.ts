@@ -1,6 +1,7 @@
 import {IAxiosAction} from "./store/axios"
 import {AxiosInstance} from "axios"
 import {IBreed, ICategory, IImage} from "../../env"
+import * as React from "react"
 
 export interface IHomeActionProps {
 }
@@ -11,4 +12,5 @@ export interface IHomeProps extends IHomeActionProps {
 }
 export interface IHomeState {
   images: Array<IImage>
+  imageInput: React.RefObject<HTMLInputElement>
 }

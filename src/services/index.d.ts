@@ -32,6 +32,24 @@ export interface IUploadImageData {
   sub_id?: string
 }
 
+export interface IUploadImageResult {
+  approved: number
+  height: number
+  id: string
+  original_filename: string
+  pending: string
+  sub_id: string
+  url: string
+  width: number
+}
+
+export interface IUploadImageError {
+  headers: any
+  level: string
+  message: string
+  status: number
+}
+
 // Favourites Service
 export interface IGetFavouritesParams {
   sub_id: string

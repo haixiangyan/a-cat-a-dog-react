@@ -2,7 +2,7 @@ import store from "../store/store"
 import {
   IGetImageByIdParams, IGetImagesParams, IGetUploadedImagesParams, IUploadImageData
 } from "./index"
-import {AxiosResponse} from "axios"
+import {AxiosError, AxiosResponse} from "axios"
 
 let axios = store.getState().axios
 
@@ -26,10 +26,15 @@ export default {
       .get(`/images`, {params})
       .then((response: AxiosResponse) => response.data)
   },
-  uploadImage: (data: IUploadImageData) => {
+  uploadImage: (data: FormData) => {
     return axios
-      .post(`/images/upload`, data)
-      .then((response: AxiosResponse) => response.data)
+      .post(`/images/upload`, data, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+      .then((response: AxiosResponse) => response)
+      .catch((error: AxiosError) => error.response)
   },
   deleteImage: (imageId: string) => {
     return axios

@@ -30,17 +30,24 @@ import {
   IVote,
   IVotesElement
 } from "../../env"
+import {IUploadImageError, IUploadImageResult} from "../../services"
+import {useImperativeHandle} from "react"
+import {AxiosResponse} from "axios"
 
 class Home extends React.Component<IHomeProps, IHomeState> {
   constructor(props: IHomeProps) {
     super(props);
     this.state = {
-      images: []
+      images: [],
+      imageInput: React.createRef(),
     }
   }
 
   public async componentDidMount() {
     await this.updateImage()
+  }
+
+  private test = async () => {
     console.log(this.props.breeds, 'breeds')
     console.log(this.props.categories, 'categories')
     console.log(this.state.images[0])
@@ -82,8 +89,23 @@ class Home extends React.Component<IHomeProps, IHomeState> {
     })
   }
 
-  private uploadImage = async () => {
+  private onChangeImage = async () => {
+    const {imageInput} = this.state
+    if (!imageInput.current || !imageInput.current.files || imageInput.current.files.length === 0) {
+      return
+    }
 
+    const data = new FormData();
+    data.append('sub_id', 'hai_test');
+    data.append('file', imageInput.current.files[0]);
+    const response: AxiosResponse = await imagesService.uploadImage(data)
+    // Error
+    if (response.status.toString().startsWith('2')) {
+      alert('ok')
+    }
+    else {
+      alert(response.data.message)
+    }
   }
 
   private updateImage = async () => {
@@ -101,8 +123,7 @@ class Home extends React.Component<IHomeProps, IHomeState> {
   }
 
   public render() {
-    const {images} = this.state
-    console.log(this.props.breeds)
+    const {images, imageInput} = this.state
     return (
       <Wrapper>
         {
@@ -122,7 +143,10 @@ class Home extends React.Component<IHomeProps, IHomeState> {
               </ImageWrapper>
               <ActionDiv>
                 <VoteButton color="primary" onClick={this.vote}> <Icon fontSize="large">thumb_up</Icon> </VoteButton>
-                <UploadButton><Icon>cloud_upload</Icon></UploadButton>
+                <input onChange={this.onChangeImage} accept="image/*" style={{display: 'none'}} id="new-file" type="file" ref={imageInput} />
+                <label htmlFor="new-file">
+                  <UploadButton component="span"><Icon>cloud_upload</Icon></UploadButton>
+                </label>
                 <FavouriteButton onClick={this.favourite}> <Icon fontSize="large">star</Icon> </FavouriteButton>
                 <AnalyzeButton><Icon>show_chart</Icon></AnalyzeButton>
                 <NextButton color="secondary" onClick={this.updateImage}> <Icon fontSize="large">arrow_forward_ios</Icon> </NextButton>
