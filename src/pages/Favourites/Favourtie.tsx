@@ -1,13 +1,13 @@
 import * as React from 'react'
 
-class Vote extends React.Component {
+class Favourites extends React.Component{
   public render() {
     return (
       <div>
-        Vote Page
+        Favourite Page
       </div>
     )
   }
 }
 
-export default Vote
+export default Favourites

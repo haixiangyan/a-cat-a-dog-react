@@ -10,8 +10,8 @@ import Card from '@material-ui/core/Card'
 // Pages
 import Home from './pages/Home/Home'
 import Setting from './pages/Setting/Setting'
-import Vote from './pages/Vote/Vote'
-import Favourite from './pages/Favourite/Favourtie'
+import Vote from './pages/Votes/Vote'
+import Favourite from './pages/Favourites/Favourtie'
 // App Styles
 import './App.scss'
 import {connect} from "react-redux"
