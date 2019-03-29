@@ -9,6 +9,9 @@ export const Wrapper = styled.header`
   margin-bottom: 8px;
   color: #20232a;
   font-size: 1.2em;
+  a {
+    color: inherit;
+  }
 `
 export const UserButton = styled(IconButton)`
 

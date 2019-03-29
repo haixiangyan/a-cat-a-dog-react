@@ -1,6 +1,8 @@
 export interface IHeaderState {
   isOpenUser: boolean
-  popperEl: HTMLElement|null
+  userEl: HTMLElement|null
+  isOpenSetting: boolean
+  settingEl: HTMLElement|null
 }
 export interface IHeaderProps {
 }
