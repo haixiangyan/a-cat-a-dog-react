@@ -1,7 +1,6 @@
 import * as React from 'react'
 // Material
 import Icon from '@material-ui/core/Icon'
-import Slide from '@material-ui/core/Slide'
 // Redux
 import {IStore} from "../../store"
 import {connect} from "react-redux"
@@ -9,9 +8,6 @@ import {connect} from "react-redux"
 import imagesService from '../../services/images'
 import votesService from '../../services/votes'
 import favouritesService from '../../services/faviourites'
-import breedsService from '../../services/breeds'
-import categoriesService from '../../services/categories'
-import sourcesService from '../../services/sources'
 // Types
 import {IHomeActionProps, IHomeProps, IHomeState} from "./index"
 // Styles
@@ -21,16 +17,7 @@ import {
   ImageWrapper, Image,
   ActionDiv, VoteButton, NextButton, FavouriteButton, UploadButton, AnalyzeButton
 } from "./styles"
-import {
-  ICategory,
-  IFavourite,
-  IFavouritesElement,
-  IImage,
-  IImageAnalysis,
-  ISource,
-  IVote,
-  IVotesElement
-} from "../../env"
+import { IImage, } from "../../env"
 import {AxiosResponse} from "axios"
 import {Snackbar} from "@material-ui/core"
 import TransitionUp from "../../components/TransitionUp"
@@ -50,46 +37,13 @@ class Home extends React.Component<IHomeProps, IHomeState> {
     await this.updateImage()
   }
 
-  private test = async () => {
-    console.log(this.props.breeds, 'breeds')
-    console.log(this.props.categories, 'categories')
-    console.log(this.state.images[0])
-    const analysis: Array<IImageAnalysis> = await imagesService.analyzeImage(this.state.images[0].id)
-    console.log(analysis, 'a')
-    const votes: Array<IVotesElement> = await votesService.getVotes({
-      sub_id: 'hai_test'
-    })
-    console.log(votes, 'vs')
-    const vote: IVote = await votesService.getVoteById(votes[0].id)
-    console.log(vote, 'v')
-    const favourites: Array<IFavouritesElement> = await favouritesService.getFavourites({
-      sub_id: 'hai_test'
-    })
-    console.log(favourites, 'fs')
-    const favourite: IFavourite = await favouritesService.getFavouriteById(favourites[0].id)
-    console.log(favourite, 'f')
-    const breeds = await breedsService.getBreeds({
-      limit: 2,
-      page: 1
-    })
-    console.log(breeds, 'bs')
-    const breed = await breedsService.getBreedById(breeds[0].id)
-    console.log(breed, 'b')
-    const categories: Array<ICategory> = await categoriesService.getCategories()
-    console.log(categories, 'cs')
-    const sources: Array<ISource> = await sourcesService.getSources({
-      limit: 2,
-      page: 1
-    })
-    console.log(sources, 'ss')
-  }
-
   private vote = async () => {
     await votesService.addVote({
       sub_id: 'hai_test',
       image_id: this.state.images[0].id,
       value: 1
     })
+    this.setState({isOpenMsg: true, msg: 'Vote it'})
   }
 
   private onChangeImage = async () => {
@@ -117,9 +71,7 @@ class Home extends React.Component<IHomeProps, IHomeState> {
 
   private updateImage = async () => {
     const images: Array<IImage> = await imagesService.getImages()
-    this.setState({
-      images
-    })
+    this.setState({ images })
   }
 
   private favourite = async () => {
@@ -127,6 +79,7 @@ class Home extends React.Component<IHomeProps, IHomeState> {
       sub_id: 'hai_test',
       image_id: this.state.images[0].id
     })
+    this.setState({isOpenMsg: true, msg: 'Add to favourite'})
   }
 
   public render() {
