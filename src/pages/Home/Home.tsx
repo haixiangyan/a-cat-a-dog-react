@@ -1,6 +1,7 @@
 import * as React from 'react'
 // Material
 import Icon from '@material-ui/core/Icon'
+import Slide from '@material-ui/core/Slide'
 // Redux
 import {IStore} from "../../store"
 import {connect} from "react-redux"
@@ -30,9 +31,9 @@ import {
   IVote,
   IVotesElement
 } from "../../env"
-import {IUploadImageError, IUploadImageResult} from "../../services"
-import {useImperativeHandle} from "react"
 import {AxiosResponse} from "axios"
+import {Snackbar} from "@material-ui/core"
+import TransitionUp from "../../components/TransitionUp"
 
 class Home extends React.Component<IHomeProps, IHomeState> {
   constructor(props: IHomeProps) {
@@ -40,6 +41,8 @@ class Home extends React.Component<IHomeProps, IHomeState> {
     this.state = {
       images: [],
       imageInput: React.createRef(),
+      isOpenMsg: false,
+      msg: ''
     }
   }
 
@@ -101,11 +104,15 @@ class Home extends React.Component<IHomeProps, IHomeState> {
     const response: AxiosResponse = await imagesService.uploadImage(data)
     // Error
     if (response.status.toString().startsWith('2')) {
-      alert('ok')
+      this.setState({isOpenMsg: true, msg: 'Upload successfully'})
     }
     else {
-      alert(response.data.message)
+      this.setState({isOpenMsg: true, msg: response.data.message})
     }
+  }
+
+  private onCloseMsg = async () => {
+    this.setState({isOpenMsg: false})
   }
 
   private updateImage = async () => {
@@ -123,20 +130,16 @@ class Home extends React.Component<IHomeProps, IHomeState> {
   }
 
   public render() {
-    const {images, imageInput} = this.state
+    const {images, imageInput, isOpenMsg, msg} = this.state
     return (
       <Wrapper>
         {
           images.map(image =>
             <div key={image.id}>
               <Header>
-                <UserButton >
-                  <Icon>person</Icon>
-                </UserButton>
+                <UserButton > <Icon>person</Icon> </UserButton>
                 <span>🐱A🐶</span>
-                <SettingButton >
-                  <Icon>settings</Icon>
-                </SettingButton>
+                <SettingButton > <Icon>settings</Icon> </SettingButton>
               </Header>
               <ImageWrapper>
                 <Image src={image.url} alt="Animal Image"/>
@@ -151,6 +154,8 @@ class Home extends React.Component<IHomeProps, IHomeState> {
                 <AnalyzeButton><Icon>show_chart</Icon></AnalyzeButton>
                 <NextButton color="secondary" onClick={this.updateImage}> <Icon fontSize="large">arrow_forward_ios</Icon> </NextButton>
               </ActionDiv>
+
+              <Snackbar open={isOpenMsg} TransitionComponent={TransitionUp} onClose={this.onCloseMsg} message={msg}/>
             </div>
           )
         }

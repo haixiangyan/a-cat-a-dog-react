@@ -13,4 +13,6 @@ export interface IHomeProps extends IHomeActionProps {
 export interface IHomeState {
   images: Array<IImage>
   imageInput: React.RefObject<HTMLInputElement>
+  isOpenMsg: boolean
+  msg: string
 }
