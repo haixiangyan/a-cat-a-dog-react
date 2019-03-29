@@ -9,6 +9,7 @@ import Popper from "@material-ui/core/Popper"
 import {Wrapper, UserButton, UserName, SettingButton} from "./styles"
 // Types
 import {IHeaderProps, IHeaderState} from "./index"
+import {Link} from "react-router-dom"
 
 class Header extends React.Component<IHeaderProps, IHeaderState> {
   constructor(props: IHeaderProps) {
@@ -32,8 +33,8 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
     return (
       <Wrapper>
         <UserButton onClick={this.openUser}> <Icon>person</Icon> </UserButton>
-        <Button href="/">🐱A🐶</Button>
-        <SettingButton href="/setting"> <Icon>settings</Icon> </SettingButton>
+        <Link to="/"><Button>🐱A🐶</Button></Link>
+        <Link to="/setting"><SettingButton><Icon>settings</Icon></SettingButton></Link>
 
         <Popper placement="bottom-start" open={isOpenUser} anchorEl={popperEl} transition>
           {({ TransitionProps }) => (

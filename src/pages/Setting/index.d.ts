@@ -10,6 +10,10 @@ export interface ISettingProps extends ISettingActionProps{
 
 export interface ISettingState {
   selectedType: 'CAT'|'DOG'
-  selectedBreed: string
+  selectedBreed: ISettingItem
   selectedCategory: string
+}
+
+export interface ISettingItem {
+  [key: string]: boolean
 }
