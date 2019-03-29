@@ -33,7 +33,7 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
       <Wrapper>
         <UserButton onClick={this.openUser}> <Icon>person</Icon> </UserButton>
         <Button href="/">🐱A🐶</Button>
-        <SettingButton > <Icon>settings</Icon> </SettingButton>
+        <SettingButton href="/setting"> <Icon>settings</Icon> </SettingButton>
 
         <Popper placement="bottom-start" open={isOpenUser} anchorEl={popperEl} transition>
           {({ TransitionProps }) => (
