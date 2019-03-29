@@ -1,7 +1,5 @@
 import store from "../store/store"
-import {
-  IGetImageByIdParams, IGetImagesParams, IGetUploadedImagesParams, IUploadImageData
-} from "./index"
+import {IGetImagesParams, IGetUploadedImagesParams} from "./index"
 import {AxiosError, AxiosResponse} from "axios"
 
 let axios = store.getState().axios
@@ -16,9 +14,9 @@ export default {
       .get(`/images/search`, {params})
       .then((response: AxiosResponse) => response.data)
   },
-  getImageById: (imageId: string, params: IGetImageByIdParams) => {
+  getImageById: (imageId: string) => {
     return axios
-      .get(`/images/${imageId}`, {params})
+      .get(`/images/${imageId}`)
       .then((response: AxiosResponse) => response.data)
   },
   getUploadedImages: (params: IGetUploadedImagesParams) => {

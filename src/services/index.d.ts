@@ -9,14 +9,11 @@ export interface IGetImagesParams {
   category_ids?: string
 }
 
-export interface IGetImageByIdParams {
-  sub_id?: string
+export interface IGetUploadedImagesParams {
+  sub_id: string
   size?: 'full' | 'med' | 'small' | 'thumb'
   include_vote?: string
   include_favourite?: string
-}
-
-export interface IGetUploadedImagesParams {
   limit?: number
   page?: number
   order?: 'DESC' | 'ASC'

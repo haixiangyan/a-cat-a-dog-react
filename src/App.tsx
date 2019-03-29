@@ -10,8 +10,8 @@ import Card from '@material-ui/core/Card'
 // Pages
 import Home from './pages/Home/Home'
 import Setting from './pages/Setting/Setting'
-import Vote from './pages/Votes/Vote'
-import Favourite from './pages/Favourites/Favourtie'
+import Votes from './pages/Votes/Votes'
+import Favourites from './pages/Favourites/Favourties'
 // App Styles
 import './App.scss'
 import {connect} from "react-redux"
@@ -42,8 +42,8 @@ class App extends Component<IAppProps> {
         <Card className="app-wrapper">
           <Route path="/" exact={true} component={Home}/>
           <Route path="/setting" component={Setting}/>
-          <Route path="/vote" component={Vote}/>
-          <Route path="/favourite" component={Favourite}/>
+          <Route path="/votes" component={Votes}/>
+          <Route path="/favourites" component={Favourites}/>
         </Card>
       </Router>
     );
