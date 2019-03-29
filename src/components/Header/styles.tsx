@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import IconButton from '@material-ui/core/IconButton'
+import Typography from "@material-ui/core/Typography"
 
 export const Wrapper = styled.header`
   display: flex;
@@ -11,6 +12,9 @@ export const Wrapper = styled.header`
 `
 export const UserButton = styled(IconButton)`
 
+`
+export const UserName = styled(Typography)`
+  padding: 8px;
 `
 export const SettingButton = styled(IconButton)`
 `
