@@ -23,11 +23,6 @@ import {BreedSetting, CategorySetting, TypeSetting, Wrapper} from "./styles"
 class Setting extends React.Component<ISettingProps, ISettingState> {
   constructor(props: ISettingProps) {
     super(props)
-    this.state = {
-      selectedType: 'CAT',
-      selectedBreed: {},
-      selectedCategory: ''
-    }
   }
 
   public async componentDidMount(){
@@ -42,12 +37,6 @@ class Setting extends React.Component<ISettingProps, ISettingState> {
   }
 
   private onChangeBreed = (event: React.ChangeEvent<any>) => {
-    const newSelectedBreed = Object.assign({}, this.state.selectedBreed, {
-      [event.target.value]: true
-    })
-    this.setState({
-      selectedBreed: newSelectedBreed
-    })
   }
 
   private onChangeCategory = (event: React.ChangeEvent<any>) => {
@@ -55,9 +44,7 @@ class Setting extends React.Component<ISettingProps, ISettingState> {
   }
 
   public render() {
-    const {selectedType, selectedBreed, selectedCategory} = this.state
     const {breeds, categories, setting} = this.props
-    console.log(setting.breeds)
     return (
       <Wrapper>
         <Header/>
@@ -90,20 +77,18 @@ class Setting extends React.Component<ISettingProps, ISettingState> {
         <section>
           <h3>Category Setting</h3>
           <CategorySetting>
-            <RadioGroup value={selectedType} onChange={this.onChangeType}>
-              {
-                categories.map(category =>
-                  <FormControlLabel
-                    key={category.id}
-                    value={String(category.id)}
-                    control={<Checkbox/>}
-                    onChange={this.onChangeCategory}
-                    checked={Boolean(setting.categories[category.id])}
-                    label={category.name}
-                  />
-                )
-              }
-            </RadioGroup>
+            {
+              categories.map(category =>
+                <FormControlLabel
+                  key={category.id}
+                  value={String(category.id)}
+                  control={<Checkbox/>}
+                  onChange={this.onChangeCategory}
+                  checked={Boolean(setting.categories[category.id])}
+                  label={category.name}
+                />
+              )
+            }
           </CategorySetting>
         </section>
       </Wrapper>

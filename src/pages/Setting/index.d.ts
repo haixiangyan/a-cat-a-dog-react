@@ -22,9 +22,6 @@ export interface ISettingProps extends ISettingActionProps {
 }
 
 export interface ISettingState {
-  selectedType: 'CAT' | 'DOG'
-  selectedBreed: ISettingItem
-  selectedCategory: string
 }
 
 export interface ISettingItem {
