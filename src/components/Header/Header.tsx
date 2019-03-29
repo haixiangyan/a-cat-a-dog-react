@@ -3,13 +3,14 @@ import * as React from 'react'
 import Icon from '@material-ui/core/Icon'
 // Styles
 import {Wrapper, UserButton, SettingButton} from "./styles"
+import {Button} from "@material-ui/core"
 
 class Header extends React.Component {
   public render() {
     return (
       <Wrapper>
         <UserButton > <Icon>person</Icon> </UserButton>
-        <span>🐱A🐶</span>
+        <Button href="/">🐱A🐶</Button>
         <SettingButton > <Icon>settings</Icon> </SettingButton>
       </Wrapper>
     )
