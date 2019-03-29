@@ -1,6 +1,13 @@
 import * as React from 'react'
 // Redux
-import {ISettingActionProps, ISettingItem, ISettingProps, ISettingState} from "./index"
+import {ISettingActionProps, ISettingProps, ISettingState} from "./index"
+import {
+  initSettingBreeds,
+  initSettingCategories,
+  updateSettingBreeds,
+  updateSettingCategories,
+  updateSettingType
+} from "../../store/setting/actions"
 // Material UI
 import Radio from "@material-ui/core/Radio"
 import Checkbox from '@material-ui/core/Checkbox'
@@ -11,7 +18,7 @@ import Header from '../../components/Header/Header'
 import {IStore} from "../../store"
 import {connect} from "react-redux"
 // Styles
-import {Wrapper, TypeSetting, BreedSetting, CategorySetting} from "./styles"
+import {BreedSetting, CategorySetting, TypeSetting, Wrapper} from "./styles"
 
 class Setting extends React.Component<ISettingProps, ISettingState> {
   constructor(props: ISettingProps) {
@@ -21,6 +28,11 @@ class Setting extends React.Component<ISettingProps, ISettingState> {
       selectedBreed: {},
       selectedCategory: ''
     }
+  }
+
+  public async componentDidMount(){
+    initSettingBreeds({})
+    initSettingCategories({})
   }
 
   private onChangeType = (event: React.ChangeEvent<any>) => {
@@ -38,18 +50,23 @@ class Setting extends React.Component<ISettingProps, ISettingState> {
     })
   }
 
+  private onChangeCategory = (event: React.ChangeEvent<any>) => {
+
+  }
+
   public render() {
     const {selectedType, selectedBreed, selectedCategory} = this.state
-    const {breeds, categories} = this.props
+    const {breeds, categories, setting} = this.props
+    console.log(setting.breeds)
     return (
       <Wrapper>
         <Header/>
         <section>
           <h3>Type Setting</h3>
           <TypeSetting>
-            <RadioGroup value={selectedType} onChange={this.onChangeType}>
-              <FormControlLabel value="CAT" control={<Radio />} label="CAT" />
-              <FormControlLabel value="DOG" control={<Radio />} label="DOG" />
+            <RadioGroup value={setting.type} onChange={this.onChangeType}>
+              <FormControlLabel value="CAT" control={<Radio/>} label="CAT"/>
+              <FormControlLabel value="DOG" control={<Radio/>} label="DOG"/>
             </RadioGroup>
           </TypeSetting>
         </section>
@@ -60,10 +77,10 @@ class Setting extends React.Component<ISettingProps, ISettingState> {
               breeds.map(breed =>
                 <FormControlLabel
                   key={breed.id}
-                  value={breed.id}
-                  control={<Checkbox />}
+                  value={String(breed.id)}
+                  control={<Checkbox/>}
                   onChange={this.onChangeBreed}
-                  checked={selectedBreed[breed.id]}
+                  checked={Boolean(setting.breeds[breed.id])}
                   label={breed.name}
                 />
               )
@@ -74,8 +91,18 @@ class Setting extends React.Component<ISettingProps, ISettingState> {
           <h3>Category Setting</h3>
           <CategorySetting>
             <RadioGroup value={selectedType} onChange={this.onChangeType}>
-              <FormControlLabel value="CAT" control={<Radio />} label="CAT" />
-              <FormControlLabel value="DOG" control={<Radio />} label="DOG" />
+              {
+                categories.map(category =>
+                  <FormControlLabel
+                    key={category.id}
+                    value={String(category.id)}
+                    control={<Checkbox/>}
+                    onChange={this.onChangeCategory}
+                    checked={Boolean(setting.categories[category.id])}
+                    label={category.name}
+                  />
+                )
+              }
             </RadioGroup>
           </CategorySetting>
         </section>
@@ -84,12 +111,19 @@ class Setting extends React.Component<ISettingProps, ISettingState> {
   }
 }
 
-const mapStateToProps = (state: IStore): ISettingProps => ({
+const mapStateToProps = (state: IStore) => ({
   breeds: state.breeds,
-  categories: state.categories
+  categories: state.categories,
+  setting: state.setting
 })
 
-const mapDispatchToProps: ISettingActionProps = { }
+const mapDispatchToProps: ISettingActionProps = {
+  updateSettingType,
+  updateSettingBreeds,
+  updateSettingCategories,
+  initSettingBreeds,
+  initSettingCategories
+}
 
 export default connect(
   mapStateToProps,

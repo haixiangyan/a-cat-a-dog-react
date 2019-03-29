@@ -8,11 +8,11 @@ import {
 import {
   IInitBreedsAction,
   IInitCategoriesAction,
+  ISettingItem,
   IUpdateBreedsAction,
   IUpdateCategoriesAction,
   IUpdateTypeAction
 } from "./index"
-import {IBreed, ICategory} from "../../env"
 
 export const updateSettingType = (payload: 'CAT' | 'DOG'): IUpdateTypeAction => {
   return {
@@ -21,7 +21,7 @@ export const updateSettingType = (payload: 'CAT' | 'DOG'): IUpdateTypeAction => 
   }
 }
 
-export const initSettingBreeds = (payload: Array<IBreed>): IInitBreedsAction => {
+export const initSettingBreeds = (payload: ISettingItem): IInitBreedsAction => {
   return {
     type: INIT_SETTING_BREEDS,
     payload
@@ -35,7 +35,7 @@ export const updateSettingBreeds = (payload: string): IUpdateBreedsAction => {
   }
 }
 
-export const initSettingCategories = (payload: Array<ICategory>): IInitCategoriesAction => {
+export const initSettingCategories = (payload: ISettingItem): IInitCategoriesAction => {
   return {
     type: INIT_SETTING_CATEGORIES,
     payload

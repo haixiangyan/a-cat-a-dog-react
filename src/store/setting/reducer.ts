@@ -6,14 +6,14 @@ import {
   UPDATE_SETTING_TYPE
 } from "../actionTypes";
 import {
-  IInitBreedsAction, IInitCategoriesAction,
-  ISettingItem,
+  IInitBreedsAction,
+  IInitCategoriesAction,
   ISettingStore,
-  IUpdateBreedsAction, IUpdateCategoriesAction,
+  IUpdateBreedsAction,
+  IUpdateCategoriesAction,
   IUpdateTypeAction,
   SettingAction
 } from "./index"
-import {IBreed, ICategory} from "../../env"
 
 let initState: ISettingStore = {
   type: 'CAT',
@@ -26,22 +26,12 @@ const reducer = (state = initState, action: SettingAction) => {
     case UPDATE_SETTING_TYPE:
       return {...state, type: (<IUpdateTypeAction>action).payload}
     case INIT_SETTING_BREEDS:
-      const breeds: Array<IBreed> = (<IInitBreedsAction>action).payload
-      const initSettingBreeds: ISettingItem = {}
-      breeds.forEach(breed => {
-        initSettingBreeds[breed.id] = false
-      })
-      return {...state, breeds: initSettingBreeds}
+      return {...state, breeds: (<IInitBreedsAction>action).payload}
     case UPDATE_SETTING_BREEDS:
       const changedBreedId: string = (<IUpdateBreedsAction>action).payload
       return {...state, breeds: {...state.breeds, [changedBreedId]: true}}
     case INIT_SETTING_CATEGORIES:
-      const categories: Array<ICategory> = (<IInitCategoriesAction>action).payload
-      const initSettingCategories: ISettingItem = {}
-      categories.forEach(category => {
-        initSettingCategories[category.id] = false
-      })
-      return {...state, categories: initSettingCategories}
+      return {...state, categories: (<IInitCategoriesAction>action).payload}
     case UPDATE_SETTING_CATEGORIES:
       const changedCategoryId: string = (<IUpdateCategoriesAction>action).payload
       return {...state, categories: {...state.categories, [changedCategoryId]: true}}

@@ -1,5 +1,4 @@
 import {Action} from "redux"
-import {IBreed, ICategory} from "../../env"
 
 export interface ISettingItem {
   [key: string]: boolean
@@ -18,7 +17,7 @@ export interface IUpdateTypeAction extends Action<string> {
 }
 
 export interface IInitBreedsAction extends Action<string> {
-  payload: Array<IBreed>
+  payload: ISettingItem
 }
 
 export interface IUpdateBreedsAction extends Action<string> {
@@ -26,7 +25,7 @@ export interface IUpdateBreedsAction extends Action<string> {
 }
 
 export interface IInitCategoriesAction extends Action<string> {
-  payload: Array<ICategory>
+  payload: ISettingItem
 }
 
 export interface IUpdateCategoriesAction extends Action<string> {
@@ -34,4 +33,4 @@ export interface IUpdateCategoriesAction extends Action<string> {
 }
 
 // General action type
-type SettingAction = ISettingStore | IUpdateTypeAction | IInitBreedsAction | IUpdateBreedsAction
+type SettingAction = IUpdateTypeAction | IInitBreedsAction | IUpdateBreedsAction | IInitCategoriesAction | IUpdateCategoriesAction
