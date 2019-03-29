@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+div[role="tooltip"] {
+  z-index: 1;
+}
+
 #root {
   display: flex;
   align-items: center;
