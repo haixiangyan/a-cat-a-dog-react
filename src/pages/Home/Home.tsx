@@ -4,6 +4,8 @@ import Icon from '@material-ui/core/Icon'
 // Redux
 import {IStore} from "../../store"
 import {connect} from "react-redux"
+// Material UI
+import {Snackbar} from "@material-ui/core"
 // Services
 import imagesService from '../../services/images'
 import votesService from '../../services/votes'
@@ -11,16 +13,13 @@ import favouritesService from '../../services/faviourites'
 // Types
 import {IHomeActionProps, IHomeProps, IHomeState} from "./index"
 // Styles
-import {
-  Wrapper,
-  Header, UserButton, SettingButton,
-  ImageWrapper, Image,
-  ActionDiv, VoteButton, NextButton, FavouriteButton, UploadButton, AnalyzeButton
-} from "./styles"
-import { IImage, } from "../../env"
+import { Wrapper, ImageWrapper, Image, ActionDiv, VoteButton, NextButton, FavouriteButton, UploadButton, AnalyzeButton } from "./styles"
+// Types
+import {IImage} from "../../env"
 import {AxiosResponse} from "axios"
-import {Snackbar} from "@material-ui/core"
-import TransitionUp from "../../components/TransitionUp"
+// Custom components
+import TransitionUp from "../../components/TransitionUp/TransitionUp"
+import Header from '../../components/Header/Header'
 
 class Home extends React.Component<IHomeProps, IHomeState> {
   constructor(props: IHomeProps) {
@@ -89,11 +88,7 @@ class Home extends React.Component<IHomeProps, IHomeState> {
         {
           images.map(image =>
             <div key={image.id}>
-              <Header>
-                <UserButton > <Icon>person</Icon> </UserButton>
-                <span>🐱A🐶</span>
-                <SettingButton > <Icon>settings</Icon> </SettingButton>
-              </Header>
+              <Header/>
               <ImageWrapper>
                 <Image src={image.url} alt="Animal Image"/>
               </ImageWrapper>
