@@ -6,6 +6,8 @@ A React App for showing cats 🐱 and dogs 🐶.
 
 ## Screenshot
 
+[Click here to view the demo](https://haixiang6123.github.io/a-cat-a-dog-react/#/register)
+
 ![](https://i.loli.net/2019/03/31/5c9fa6ca869d6.jpeg)
 
 ## How to use
