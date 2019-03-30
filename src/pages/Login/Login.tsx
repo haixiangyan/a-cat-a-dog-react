@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField'
 // Types
 import {ILoginProps, ILoginState} from "./index"
 // Styles
-import {Wrapper, LoginButton, BackgroundImage} from './styles'
+import {Wrapper, LoginButton, Avatar} from './styles'
 
 class Login extends React.Component<ILoginProps, ILoginState> {
   constructor(props: ILoginProps) {
@@ -24,7 +24,7 @@ class Login extends React.Component<ILoginProps, ILoginState> {
     const {subId} = this.state
     return (
       <Wrapper>
-        <BackgroundImage src="https://i.loli.net/2019/03/30/5c9eeddca1a43.jpg" alt="bg"/>
+        <Avatar src="https://i.loli.net/2019/03/30/5c9eeddca1a43.jpg" alt="bg"/>
         <section>
           <TextField
             id="standard-name"

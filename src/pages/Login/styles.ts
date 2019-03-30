@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
     text-align: center;
   }
 `
-export const BackgroundImage = styled.img`
+export const Avatar = styled.img`
   display: block;
   text-align: center;
   margin: 0 auto;
