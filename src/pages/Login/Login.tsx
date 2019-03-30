@@ -28,10 +28,11 @@ class Login extends React.Component<ILoginProps, ILoginState> {
         <section>
           <TextField
             id="standard-name"
-            label="Login With User Name"
+            label="User Name"
             value={subId}
             onChange={this.onChangeSubId}
             margin="normal"
+            variant="outlined"
           />
         </section>
         <LoginButton variant="contained" color="primary">
