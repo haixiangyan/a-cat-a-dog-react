@@ -1,11 +1,12 @@
 import * as React from 'react'
+// Redux
+import {connect} from "react-redux"
 // Types
 import {IVotesProps, IVotesState} from "./index"
 import {IVotesElement} from "../../env"
 // Material UI
 import GridList from '@material-ui/core/GridList'
 import GridListTile from '@material-ui/core/GridListTile'
-import ListSubheader from '@material-ui/core/ListSubheader'
 import GridListTileBar from '@material-ui/core/GridListTileBar'
 import IconButton from '@material-ui/core/IconButton'
 import Icon from '@material-ui/core/Icon'
@@ -18,6 +19,7 @@ import votesService from '../../services/votes'
 import imagesService from '../../services/images'
 // Custom components
 import Header from '../../components/Header/Header'
+import {IStore} from "../../store"
 
 class Votes extends React.Component<IVotesProps, IVotesState> {
   constructor(props: IVotesProps) {
@@ -30,7 +32,7 @@ class Votes extends React.Component<IVotesProps, IVotesState> {
   }
 
   public async componentDidMount() {
-    const votes: Array<IVotesElement> = await votesService.getVotes({sub_id: 'hai_test'})
+    const votes: Array<IVotesElement> = await votesService.getVotes({sub_id: this.props.user.subId})
     let imagesWithVote = []
 
     for (let i = 0; i < votes.length; i++) {
@@ -106,4 +108,12 @@ class Votes extends React.Component<IVotesProps, IVotesState> {
   }
 }
 
-export default Votes
+const mapStateToProps = (state: IStore) => ({
+  user: state.user
+})
+const mapDispatchToProps = {}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Votes)

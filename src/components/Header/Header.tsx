@@ -1,6 +1,8 @@
 import * as React from 'react'
 // Router
 import {withRouter} from "react-router-dom"
+// Redux
+import {connect} from "react-redux"
 // Material UI
 import Icon from '@material-ui/core/Icon'
 import Button from "@material-ui/core/Button"
@@ -16,6 +18,7 @@ import {Wrapper, UserButton, UserName, SettingButton} from "./styles"
 // Types
 import {IHeaderProps, IHeaderState} from "./index"
 import {Link} from "react-router-dom"
+import {IStore} from "../../store"
 
 class Header extends React.Component<IHeaderProps, IHeaderState> {
   constructor(props: IHeaderProps) {
@@ -44,7 +47,7 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
 
   public render() {
     const {isOpenUser, userEl, isOpenSetting, settingEl} = this.state
-    const {history} = this.props
+    const {history, user} = this.props
     return (
       <Wrapper>
         <UserButton onClick={this.toggleUser}> <Icon>person</Icon> </UserButton>
@@ -71,7 +74,7 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
           {({ TransitionProps }) => (
             <Fade {...TransitionProps} timeout={350}>
               <Paper>
-                <UserName>hai_test</UserName>
+                <UserName>{user.subId}</UserName>
               </Paper>
             </Fade>
           )}
@@ -81,4 +84,12 @@ class Header extends React.Component<IHeaderProps, IHeaderState> {
   }
 }
 
-export default withRouter(Header)
+const mapStateToProps = (state: IStore) => ({
+  user: state.user
+})
+const mapDispatchToProps = {}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(Header))

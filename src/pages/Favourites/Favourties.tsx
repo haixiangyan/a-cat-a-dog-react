@@ -1,11 +1,12 @@
 import * as React from 'react'
+// Redux
+import {connect} from "react-redux"
 // Types
 import {IFavouritesProps, IFavouritesState} from "./index"
 import {IFavouritesElement} from "../../env"
 // Material UI
 import GridList from '@material-ui/core/GridList'
 import GridListTile from '@material-ui/core/GridListTile'
-import ListSubheader from '@material-ui/core/ListSubheader'
 import GridListTileBar from '@material-ui/core/GridListTileBar'
 import IconButton from '@material-ui/core/IconButton'
 import Icon from '@material-ui/core/Icon'
@@ -18,6 +19,7 @@ import favouritesService from '../../services/faviourites'
 import imagesService from '../../services/images'
 // Custom components
 import Header from '../../components/Header/Header'
+import {IStore} from "../../store"
 
 class Favourites extends React.Component<IFavouritesProps, IFavouritesState> {
   constructor(props: IFavouritesProps) {
@@ -30,7 +32,7 @@ class Favourites extends React.Component<IFavouritesProps, IFavouritesState> {
   }
 
   public async componentDidMount() {
-    const favourites: Array<IFavouritesElement> = await favouritesService.getFavourites({sub_id: 'hai_test'})
+    const favourites: Array<IFavouritesElement> = await favouritesService.getFavourites({sub_id: this.props.user.subId})
     let imagesWithFavourite = []
 
     for (let i = 0; i < favourites.length; i++) {
@@ -106,4 +108,12 @@ class Favourites extends React.Component<IFavouritesProps, IFavouritesState> {
   }
 }
 
-export default Favourites
+const mapStateToProps = (state: IStore) => ({
+  user: state.user
+})
+const mapDispatchToProps = {}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Favourites)

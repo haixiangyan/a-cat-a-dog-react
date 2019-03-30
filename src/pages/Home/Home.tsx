@@ -51,7 +51,7 @@ class Home extends React.Component<IHomeProps, IHomeState> {
 
   private vote = async () => {
     await votesService.addVote({
-      sub_id: 'hai_test',
+      sub_id: this.props.user.subId,
       image_id: this.state.images[0].id,
       value: 1
     })
@@ -65,7 +65,7 @@ class Home extends React.Component<IHomeProps, IHomeState> {
     }
 
     const data = new FormData();
-    data.append('sub_id', 'hai_test');
+    data.append('sub_id', this.props.user.subId);
     data.append('file', imageInput.current.files[0]);
     const response: AxiosResponse = await imagesService.uploadImage(data)
     // Error
@@ -96,7 +96,7 @@ class Home extends React.Component<IHomeProps, IHomeState> {
 
   private favourite = async () => {
     await favouritesService.addFavourite({
-      sub_id: 'hai_test',
+      sub_id: this.props.user.subId,
       image_id: this.state.images[0].id
     })
     this.setState({isOpenMsg: true, msg: 'Add to favourite'})
@@ -148,8 +148,7 @@ class Home extends React.Component<IHomeProps, IHomeState> {
 
 const mapStateToProps = (state: IStore) => ({
   axios: state.axios,
-  breeds: state.breeds,
-  categories: state.categories
+  user: state.user
 })
 const mapDispatchToProps: IHomeActionProps = {}
 
