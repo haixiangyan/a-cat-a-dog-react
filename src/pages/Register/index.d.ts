@@ -9,4 +9,5 @@ export interface IRegisterProps extends RouteComponentProps {
 export interface IRegisterState {
   subId: string
   type: 'CAT'|'DOG'
+  isError: boolean
 }

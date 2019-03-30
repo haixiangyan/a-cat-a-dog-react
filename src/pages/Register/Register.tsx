@@ -23,7 +23,8 @@ class Register extends React.Component<IRegisterProps, IRegisterState> {
     super(props)
     this.state = {
       subId: '',
-      type: 'CAT'
+      type: 'CAT',
+      isError: false
     }
   }
 
@@ -41,6 +42,11 @@ class Register extends React.Component<IRegisterProps, IRegisterState> {
 
   private register = () => {
     const {subId, type} = this.state
+    // Validation
+    if (!subId || subId === 'undefined' || subId === 'null') {
+      this.setState({ isError: true })
+      return
+    }
     // Store in localStorage
     const user = { subId, type }
     localStorage.setItem('user', JSON.stringify(user))
@@ -52,12 +58,13 @@ class Register extends React.Component<IRegisterProps, IRegisterState> {
   }
 
   public render() {
-    const {subId, type} = this.state
+    const {subId, type, isError} = this.state
     return (
       <Wrapper>
         <Avatar src="https://i.loli.net/2019/03/30/5c9efda85ee97.jpg" alt="avatar"/>
         <section>
           <TextField
+            error={isError}
             id="standard-name"
             label="User Name"
             value={subId}
@@ -80,9 +87,6 @@ class Register extends React.Component<IRegisterProps, IRegisterState> {
             Get Started
           </LoginButton>
         </section>
-        <small>
-          Got a user name? <Link to="/login">login here</Link>
-        </small>
       </Wrapper>
     )
   }
