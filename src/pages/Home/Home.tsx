@@ -25,7 +25,7 @@ import {
   Wrapper
 } from "./styles"
 // Types
-import {IImage} from "../../env"
+import {IImage, IImageAnalysis} from "../../env"
 import {AxiosResponse} from "axios"
 // Custom components
 import TransitionUp from "../../components/TransitionUp/TransitionUp"
@@ -82,16 +82,12 @@ class Home extends React.Component<IHomeProps, IHomeState> {
 
   private updateImage = async () => {
     const images: Array<IImage> = await imagesService.getImages()
-    this.setState({images})
+    const imageAnalysis: Array<IImageAnalysis> = await this.analyze(images)
+    this.setState({images, imageAnalysis})
   }
 
   private toggleAnalysisCollapse = async () => {
-    await this.setState({isOpenAnalysis: !this.state.isOpenAnalysis})
-    if (this.state.isOpenAnalysis) {
-      await this.analyze()
-      const wrapper = document.querySelector('#app-wrapper')
-      wrapper && wrapper.scroll(0, 9999)
-    }
+    this.setState({isOpenAnalysis: !this.state.isOpenAnalysis})
   }
 
   private favourite = async () => {
@@ -102,13 +98,11 @@ class Home extends React.Component<IHomeProps, IHomeState> {
     this.setState({isOpenMsg: true, msg: 'Add to favourite'})
   }
 
-  private analyze = async () => {
-    const {images} = this.state
+  private analyze = async (images: Array<IImage>) => {
     if (images.length === 0) {
       return
     }
-    const imageAnalysis = await imagesService.analyzeImage(this.state.images[0].id)
-    this.setState({imageAnalysis})
+    return await imagesService.analyzeImage(images[0].id)
   }
 
   public render() {
@@ -123,16 +117,23 @@ class Home extends React.Component<IHomeProps, IHomeState> {
                   <Image src={images[0].url} alt="Animal Image"/>
               </ImageWrapper>
               <ActionDiv>
-                  <VoteButton color="primary" onClick={this.vote}> <Icon fontSize="large">thumb_up</Icon> </VoteButton>
+                  <VoteButton color="primary" onClick={this.vote}>
+                      <Icon fontSize="large">thumb_up</Icon>
+                  </VoteButton>
                   <input onChange={this.onChangeImage} accept="image/*" style={{display: 'none'}} id="new-file"
                          type="file" ref={imageInput}/>
                   <label htmlFor="new-file">
                       <UploadButton component="span"><Icon>cloud_upload</Icon></UploadButton>
                   </label>
-                  <FavouriteButton onClick={this.favourite}> <Icon fontSize="large">star</Icon> </FavouriteButton>
-                  <AnalyzeButton onClick={this.toggleAnalysisCollapse}><Icon>show_chart</Icon></AnalyzeButton>
-                  <NextButton color="secondary" onClick={this.updateImage}> <Icon
-                      fontSize="large">arrow_forward_ios</Icon> </NextButton>
+                  <FavouriteButton onClick={this.favourite}>
+                      <Icon fontSize="large">star</Icon>
+                  </FavouriteButton>
+                  <AnalyzeButton disabled={imageAnalysis.length === 0} onClick={this.toggleAnalysisCollapse}>
+                      <Icon>show_chart</Icon>
+                  </AnalyzeButton>
+                  <NextButton color="secondary" onClick={this.updateImage}>
+                      <Icon fontSize="large">arrow_forward_ios</Icon>
+                  </NextButton>
               </ActionDiv>
             {
               isOpenAnalysis && images.length > 0 && imageAnalysis.length > 0 &&

@@ -36,7 +36,6 @@ export const FavouriteButton = styled(IconButton)`
   color: #fadb14 !important;
 `
 export const AnalyzeButton = styled(IconButton)`
-  color: #20232a !important;
 `
 export const NextButton = styled(IconButton)` 
 `
