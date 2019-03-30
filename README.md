@@ -16,14 +16,14 @@ Then place following codes in it.
 
 ```typescript
 export const catKey = 'APPLY THE KEY ON https://thecatapi.com/'
-export const dogKey = 'APPLY THE KEY ON https://thedogapi.com/ '
+export const dogKey = 'APPLY THE KEY ON https://thedogapi.com/'
 ```
 
 For those 2 keys, you need to sign up in [thecatapi.com](https://thecatapi.com/) and [thedogapi.com](https://thedogapi.com/).
 
-At the end, enter commands to run it :)
-
 ### Now run it
+
+Now, enter following commands to run it :)
 ```bash
 $ cd a-cat-a-dog-react
 
