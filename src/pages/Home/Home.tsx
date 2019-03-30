@@ -5,7 +5,8 @@ import Icon from '@material-ui/core/Icon'
 import {IStore} from "../../store"
 import {connect} from "react-redux"
 // Material UI
-import {Snackbar} from "@material-ui/core"
+import Snackbar from "@material-ui/core/Snackbar"
+import Tooltip from '@material-ui/core/Tooltip'
 // Services
 import imagesService from '../../services/images'
 import votesService from '../../services/votes'
@@ -117,23 +118,35 @@ class Home extends React.Component<IHomeProps, IHomeState> {
                   <Image src={images[0].url} alt="Animal Image"/>
               </ImageWrapper>
               <ActionDiv>
-                  <VoteButton color="primary" onClick={this.vote}>
-                      <Icon fontSize="large">thumb_up</Icon>
-                  </VoteButton>
+                  <Tooltip title="Vote This Image" placement="top-start">
+                      <VoteButton color="primary" onClick={this.vote}>
+                          <Icon fontSize="large">thumb_up</Icon>
+                      </VoteButton>
+                  </Tooltip>
                   <input onChange={this.onChangeImage} accept="image/*" style={{display: 'none'}} id="new-file"
                          type="file" ref={imageInput}/>
-                  <label htmlFor="new-file">
-                      <UploadButton component="span"><Icon>cloud_upload</Icon></UploadButton>
-                  </label>
-                  <FavouriteButton onClick={this.favourite}>
-                      <Icon fontSize="large">star</Icon>
-                  </FavouriteButton>
-                  <AnalyzeButton disabled={imageAnalysis.length === 0} onClick={this.toggleAnalysisCollapse}>
-                      <Icon>show_chart</Icon>
-                  </AnalyzeButton>
-                  <NextButton color="secondary" onClick={this.updateImage}>
-                      <Icon fontSize="large">arrow_forward_ios</Icon>
-                  </NextButton>
+                  <Tooltip title="Upload Your Image" placement="top-start">
+                    <label htmlFor="new-file">
+                        <UploadButton component="span"><Icon>cloud_upload</Icon></UploadButton>
+                    </label>
+                  </Tooltip>
+                  <Tooltip title="Add To Favourite" placement="top-start">
+                    <FavouriteButton onClick={this.favourite}>
+                        <Icon fontSize="large">star</Icon>
+                    </FavouriteButton>
+                  </Tooltip>
+                  <Tooltip title="Show Analysis" placement="top-start">
+                    <div>
+                        <AnalyzeButton disabled={imageAnalysis.length === 0} onClick={this.toggleAnalysisCollapse}>
+                            <Icon>show_chart</Icon>
+                        </AnalyzeButton>
+                    </div>
+                  </Tooltip>
+                  <Tooltip title="Next Image" placement="top">
+                    <NextButton color="secondary" onClick={this.updateImage}>
+                        <Icon fontSize="large">arrow_forward_ios</Icon>
+                    </NextButton>
+                  </Tooltip>
               </ActionDiv>
             {
               isOpenAnalysis && images.length > 0 && imageAnalysis.length > 0 &&
