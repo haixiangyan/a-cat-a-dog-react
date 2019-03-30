@@ -37,7 +37,7 @@ $ yarn start
 ## Stacks
 
 * [React](https://reactjs.org/)
-* [React Router DOM](https://reacttraining.com/react-router/core/guides/philosophy)
+* [React Router](https://reacttraining.com/react-router/core/guides/philosophy)
 * [Redux](https://redux.js.org/)
 * [Material UI x React](https://material-ui.com/)
 * [Axios](https://github.com/axios/axios)
