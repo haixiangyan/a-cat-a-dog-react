@@ -1,6 +1,8 @@
 import {IBreedsAction} from "./store/breeds"
 import {IAxiosAction} from "./store/axios"
 import {ICategoriesAction} from "./store/categories"
+import {IInitUserPayload, UserAction} from "./store/user"
+import {RouteComponentProps} from "react-router"
 
 export interface IImage {
   id: string
@@ -120,5 +122,6 @@ export interface IAppActionProps {
   initCategories: (payload: Array<ICategory>) => ICategoriesAction
   updateAxios: (payload: 'CAT'|'DOG') => IAxiosAction
 }
-export interface IAppProps extends IAppActionProps{
+export interface IAppProps extends IAppActionProps {
+
 }
