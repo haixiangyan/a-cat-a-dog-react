@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField'
 import {ILoginProps, ILoginState} from "./index"
 // Styles
 import {Wrapper, LoginButton, Avatar} from './styles'
+import {Link} from "react-router-dom"
 
 class Login extends React.Component<ILoginProps, ILoginState> {
   constructor(props: ILoginProps) {
@@ -35,9 +36,14 @@ class Login extends React.Component<ILoginProps, ILoginState> {
             variant="outlined"
           />
         </section>
-        <LoginButton variant="contained" color="primary">
-          Login
-        </LoginButton>
+        <section>
+          <LoginButton variant="contained" color="primary">
+            Login
+          </LoginButton>
+        </section>
+        <small>
+          No user name? Just <Link to="/login">sign up here</Link>
+        </small>
       </Wrapper>
     )
   }

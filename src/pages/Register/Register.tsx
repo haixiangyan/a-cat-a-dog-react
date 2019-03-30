@@ -9,6 +9,7 @@ import Radio from '@material-ui/core/Radio'
 import {IRegisterProps, IRegisterState} from "./index"
 // Styles
 import {Wrapper, Avatar} from './styles'
+import {Link} from "react-router-dom"
 
 class Register extends React.Component<IRegisterProps, IRegisterState> {
   constructor(props: IRegisterProps) {
@@ -55,6 +56,9 @@ class Register extends React.Component<IRegisterProps, IRegisterState> {
             </RadioGroup>
           </FormControl>
         </section>
+        <small>
+          Got a user name? <Link to="/register">login here</Link>
+        </small>
       </Wrapper>
     )
   }
