@@ -25,7 +25,7 @@ class Login extends React.Component<ILoginProps, ILoginState> {
     const {subId} = this.state
     return (
       <Wrapper>
-        <Avatar src="https://i.loli.net/2019/03/30/5c9eeddca1a43.jpg" alt="bg"/>
+        <Avatar src="https://i.loli.net/2019/03/30/5c9efda85ee97.jpg" alt="avatar"/>
         <section>
           <TextField
             id="standard-name"
@@ -42,7 +42,7 @@ class Login extends React.Component<ILoginProps, ILoginState> {
           </LoginButton>
         </section>
         <small>
-          No user name? Just <Link to="/login">sign up here</Link>
+          No user name? Just <Link to="/register">sign up here</Link>
         </small>
       </Wrapper>
     )

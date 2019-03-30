@@ -36,7 +36,7 @@ class Register extends React.Component<IRegisterProps, IRegisterState> {
     const {subId, type} = this.state
     return (
       <Wrapper>
-        <Avatar src="https://i.loli.net/2019/03/30/5c9ef392cce79.jpg" alt="bg"/>
+        <Avatar src="https://i.loli.net/2019/03/30/5c9ef392cce79.jpg" alt="avatar"/>
         <section>
           <TextField
             id="standard-name"
@@ -57,7 +57,7 @@ class Register extends React.Component<IRegisterProps, IRegisterState> {
           </FormControl>
         </section>
         <small>
-          Got a user name? <Link to="/register">login here</Link>
+          Got a user name? <Link to="/login">login here</Link>
         </small>
       </Wrapper>
     )
