@@ -1,10 +1,6 @@
 import {IImageAnalysis} from "../../env"
 
 export const getOptions = (imageAnalysis: IImageAnalysis) => {
-  const xLabels = imageAnalysis.labels
-    .map(label => label.Name)
-  const yValues = imageAnalysis.labels
-    .map(label => Number(Number(label.Confidence).toFixed(2)))
   const data = imageAnalysis.labels
     .map(label => ({
       value: Number(label.Confidence.toFixed(2)),
