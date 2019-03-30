@@ -3,8 +3,7 @@ import {HashRouter as Router, Route} from "react-router-dom"
 // Redux
 import {IStore} from "./store"
 import {updateAxios} from "./store/axios/actions"
-import {initBreeds} from "./store/breeds/actions"
-import {initCategories} from "./store/categories/actions"
+import {updateUser} from "./store/user/actions"
 import {connect} from "react-redux"
 // Material UI
 import Card from '@material-ui/core/Card'
@@ -13,7 +12,6 @@ import Home from './pages/Home/Home'
 import Setting from './pages/Setting/Setting'
 import Votes from './pages/Votes/Votes'
 import Favourites from './pages/Favourites/Favourties'
-import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
 import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 // App Styles
@@ -26,9 +24,17 @@ class App extends Component<IAppProps> {
     super(props)
   }
 
-  public async componentDidMount() {
-    // Init animal type
-    // this.props.updateAxios('CAT')
+  public componentDidMount() {
+    const userStr = localStorage.getItem('user')
+    if (!userStr) {
+      return
+    }
+    const user = JSON.parse(userStr)
+    if (!user.subId || !user.type) {
+      return
+    }
+    this.props.updateUser(user)
+    this.props.updateAxios(user.type)
   }
 
   public render() {
@@ -40,7 +46,6 @@ class App extends Component<IAppProps> {
           <PrivateRoute path="/votes" component={Votes}/>
           <PrivateRoute path="/favourites" component={Favourites}/>
           <Route path="/register" component={Register}/>
-          <Route path="/login" component={Login}/>
         </Card>
       </Router>
     );
@@ -49,9 +54,8 @@ class App extends Component<IAppProps> {
 
 const mapStateToProps = (state: IStore) => ({})
 const mapDispatchToProps: IAppActionProps = {
-  initBreeds,
-  initCategories,
-  updateAxios
+  updateAxios,
+  updateUser
 }
 
 export default connect(

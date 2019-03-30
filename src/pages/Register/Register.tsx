@@ -4,7 +4,7 @@ import {Link} from "react-router-dom"
 import {withRouter} from "react-router-dom"
 // Redux
 import {connect} from "react-redux"
-import {initUser} from "../../store/user/actions"
+import {updateUser} from "../../store/user/actions"
 import {updateAxios} from "../../store/axios/actions"
 // Material UI
 import TextField from '@material-ui/core/TextField'
@@ -45,7 +45,7 @@ class Register extends React.Component<IRegisterProps, IRegisterState> {
     const user = { subId, type }
     localStorage.setItem('user', JSON.stringify(user))
     // Update redux
-    this.props.initUser({subId})
+    this.props.updateUser({subId, type})
     this.props.updateAxios(type)
     // Go to home page
     this.props.history.push('/')
@@ -90,7 +90,7 @@ class Register extends React.Component<IRegisterProps, IRegisterState> {
 
 const mapStateToProps = (state: IStore) => ({ })
 const mapDispatchToProps = {
-  initUser,
+  updateUser,
   updateAxios
 }
 

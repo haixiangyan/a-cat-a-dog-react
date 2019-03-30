@@ -1,9 +1,10 @@
 import * as React from 'react'
+// Router
 import {Redirect, Route} from "react-router"
 
-function isLogin() {
-    console.log('check')
+const isLogin = () => {
     const userStr = localStorage.getItem('user')
+    // Not exist user info
     if (!userStr) {
         return false
     }

@@ -1,9 +1,9 @@
-import {INIT_USER} from "../actionTypes"
-import {IInitUserAction, IInitUserPayload} from "./index"
+import {UPDATE_USER} from "../actionTypes"
+import {IUpdateUserAction, IUpdateUserPayload} from "./index"
 
-export const initUser = (payload: IInitUserPayload): IInitUserAction => {
+export const updateUser = (payload: IUpdateUserPayload): IUpdateUserAction => {
   return {
-    type: INIT_USER,
+    type: UPDATE_USER,
     payload
   }
 }

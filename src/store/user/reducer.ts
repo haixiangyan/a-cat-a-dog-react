@@ -1,14 +1,15 @@
-import {INIT_USER} from "../actionTypes";
-import {IInitUserAction, IUserStore, UserAction} from "./index"
+import {UPDATE_USER} from "../actionTypes";
+import {IUpdateUserAction, IUserStore, UserAction} from "./index"
 
 let initState: IUserStore = {
-  subId: ''
+  subId: '',
+  type: 'CAT'
 }
 
 const reducer = (state = initState, action: UserAction) => {
   switch (action.type) {
-    case INIT_USER:
-      return {...state, subId: (<IInitUserAction>action).payload.subId}
+    case UPDATE_USER:
+      return (<IUpdateUserAction>action).payload
     default:
       return state
   }

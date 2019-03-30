@@ -2,14 +2,16 @@ import {Action} from "redux"
 
 export interface IUserStore {
   subId: string
+  type: string
 }
 
-export interface IInitUserPayload {
+export interface IUpdateUserPayload {
   subId: string
+  type: string
 }
 
-export interface IInitUserAction extends Action<string>{
-  payload: IInitUserPayload
+export interface IUpdateUserAction extends Action<string>{
+  payload: IUpdateUserPayload
 }
 
-type UserAction = IInitUserAction
+type UserAction = IUpdateUserAction

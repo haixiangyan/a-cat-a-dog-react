@@ -7,4 +7,4 @@ export const INIT_CATEGORIES: string = 'INIT_CATEGORIES'
 // setting
 export const UPDATE_SETTING_TYPE: string = 'UPDATE_SETTING_TYPE'
 // user
-export const INIT_USER: string = 'INIT_USER'
+export const UPDATE_USER: string = 'UPDATE_USER'
