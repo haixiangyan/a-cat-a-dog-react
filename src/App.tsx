@@ -13,8 +13,8 @@ import Home from './pages/Home/Home'
 import Setting from './pages/Setting/Setting'
 import Votes from './pages/Votes/Votes'
 import Favourites from './pages/Favourites/Favourties'
-import Register from './pages/Register/Register'
 import Login from './pages/Login/Login'
+import Register from './pages/Register/Register'
 import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 // App Styles
 import './App.scss'
@@ -28,7 +28,7 @@ class App extends Component<IAppProps> {
 
   public async componentDidMount() {
     // Init animal type
-    this.props.updateAxios('CAT')
+    // this.props.updateAxios('CAT')
   }
 
   public render() {

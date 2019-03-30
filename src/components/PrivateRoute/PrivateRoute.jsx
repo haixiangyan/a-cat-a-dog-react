@@ -16,6 +16,6 @@ export default function PrivateRoute(props) {
     return (
         <Route {...restProps} render={props => isLogin() ?
                 (<Component {...props} />) :
-                (<Redirect to={{pathname: "/login", state: {from: props.location}}}/>)}/>
+                (<Redirect to={{pathname: "/register", state: {from: props.location}}}/>)}/>
     )
 }

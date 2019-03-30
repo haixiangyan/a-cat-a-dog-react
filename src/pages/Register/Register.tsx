@@ -1,4 +1,11 @@
 import * as React from 'react'
+// Router
+import {Link} from "react-router-dom"
+import {withRouter} from "react-router-dom"
+// Redux
+import {connect} from "react-redux"
+import {initUser} from "../../store/user/actions"
+import {updateAxios} from "../../store/axios/actions"
 // Material UI
 import TextField from '@material-ui/core/TextField'
 import FormControl from '@material-ui/core/FormControl'
@@ -7,9 +14,9 @@ import RadioGroup from '@material-ui/core/RadioGroup'
 import Radio from '@material-ui/core/Radio'
 // Types
 import {IRegisterProps, IRegisterState} from "./index"
+import {IStore} from "../../store"
 // Styles
-import {Wrapper, Avatar} from './styles'
-import {Link} from "react-router-dom"
+import {Avatar, LoginButton, Wrapper} from './styles'
 
 class Register extends React.Component<IRegisterProps, IRegisterState> {
   constructor(props: IRegisterProps) {
@@ -32,11 +39,23 @@ class Register extends React.Component<IRegisterProps, IRegisterState> {
     })
   }
 
+  private register = () => {
+    const {subId, type} = this.state
+    // Store in localStorage
+    const user = { subId, type }
+    localStorage.setItem('user', JSON.stringify(user))
+    // Update redux
+    this.props.initUser({subId})
+    this.props.updateAxios(type)
+    // Go to home page
+    this.props.history.push('/')
+  }
+
   public render() {
     const {subId, type} = this.state
     return (
       <Wrapper>
-        <Avatar src="https://i.loli.net/2019/03/30/5c9ef392cce79.jpg" alt="avatar"/>
+        <Avatar src="https://i.loli.net/2019/03/30/5c9efda85ee97.jpg" alt="avatar"/>
         <section>
           <TextField
             id="standard-name"
@@ -56,6 +75,11 @@ class Register extends React.Component<IRegisterProps, IRegisterState> {
             </RadioGroup>
           </FormControl>
         </section>
+        <section>
+          <LoginButton onClick={this.register} variant="contained" color="primary">
+            Get Started
+          </LoginButton>
+        </section>
         <small>
           Got a user name? <Link to="/login">login here</Link>
         </small>
@@ -64,4 +88,13 @@ class Register extends React.Component<IRegisterProps, IRegisterState> {
   }
 }
 
-export default Register
+const mapStateToProps = (state: IStore) => ({ })
+const mapDispatchToProps = {
+  initUser,
+  updateAxios
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(Register))
