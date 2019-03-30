@@ -8,6 +8,10 @@ import store from './store/store'
 import * as serviceWorker from './serviceWorker';
 // Root component
 import App from './App';
+// Helpers
+import {initType} from "./utils/helpers"
+
+initType()
 
 ReactDOM.render(
   <Provider store={store}>
