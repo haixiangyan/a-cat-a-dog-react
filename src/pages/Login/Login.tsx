@@ -25,7 +25,7 @@ class Login extends React.Component<ILoginProps, ILoginState> {
     const {subId} = this.state
     return (
       <Wrapper>
-        <Avatar src="https://i.loli.net/2019/03/30/5c9efda85ee97.jpg" alt="avatar"/>
+        <Avatar src="https://i.loli.net/2019/03/30/5c9ef392cce79.jpg" alt="bg"/>
         <section>
           <TextField
             id="standard-name"
