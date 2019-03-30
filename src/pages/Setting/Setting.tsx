@@ -21,7 +21,14 @@ class Setting extends React.Component<ISettingProps, ISettingState> {
   }
 
   private onChangeType = (event: React.ChangeEvent<any>) => {
-    this.props.updateUser({...this.props.user, type: event.target.value})
+    const newUser = {
+      ...this.props.user,
+      type: event.target.value
+    }
+    // Change localStorage
+    localStorage.setItem('user', JSON.stringify(newUser))
+    // Change store
+    this.props.updateUser(newUser)
     this.props.updateAxios(event.target.value)
   }
 
