@@ -38,7 +38,6 @@ class Votes extends React.Component<IVotesProps, IVotesState> {
       const imageWithVote = {...image, vote: votes[i]}
       imagesWithVote.push(imageWithVote)
     }
-    console.log(imagesWithVote, 'jjj')
     this.setState({imagesWithVote})
   }
 
@@ -74,10 +73,8 @@ class Votes extends React.Component<IVotesProps, IVotesState> {
       <div>
         <Header/>
 
+        <h3 style={{textAlign: 'center', marginBottom: 12}}>Voted Images</h3>
         <GridList cellHeight={180}>
-          <GridListTile key="Subheader" cols={2} style={{height: 'auto'}}>
-            <ListSubheader component="div">All Images You Voted</ListSubheader>
-          </GridListTile>
           {
             imagesWithVote.map(image => (
               <GridListTile key={image.id}>

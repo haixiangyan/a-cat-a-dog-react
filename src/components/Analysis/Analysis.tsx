@@ -15,7 +15,7 @@ class Analysis extends React.Component<IAnalysisProps, IAnalysisState> {
   }
 
   private drawPie = () => {
-    const pieEl: HTMLDivElement = document.querySelector('image-analysis-pie')
+    const pieEl: HTMLDivElement|null = document.querySelector('image-analysis-pie')
     if (!pieEl) {
       return
     }

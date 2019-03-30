@@ -73,10 +73,8 @@ class Favourites extends React.Component<IFavouritesProps, IFavouritesState> {
       <div>
         <Header/>
 
+        <h3 style={{textAlign: 'center', marginBottom: 12}}>Your Favourite Images</h3>
         <GridList cellHeight={180}>
-          <GridListTile key="Subheader" cols={2} style={{height: 'auto'}}>
-            <ListSubheader component="div">All Your Favourite Images</ListSubheader>
-          </GridListTile>
           {
             imagesWithFavourite.map(image => (
               <GridListTile key={image.id}>
