@@ -12,6 +12,8 @@ import Home from './pages/Home/Home'
 import Setting from './pages/Setting/Setting'
 import Votes from './pages/Votes/Votes'
 import Favourites from './pages/Favourites/Favourties'
+import Register from './pages/Register/Register'
+import Login from './pages/Login/Login'
 // App Styles
 import './App.scss'
 import {connect} from "react-redux"
@@ -44,6 +46,8 @@ class App extends Component<IAppProps> {
           <Route path="/setting" component={Setting}/>
           <Route path="/votes" component={Votes}/>
           <Route path="/favourites" component={Favourites}/>
+          <Route path="/register" component={Register}/>
+          <Route path="/login" component={Login}/>
         </Card>
       </Router>
     );
