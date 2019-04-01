@@ -11,7 +11,7 @@ A React App for showing cats 🐱 and dogs 🐶.
 ## How to use
 
 ### Before running it
-Before cloning the repo and running it, you need to add a file `secret.ts` to 
+Before running it, you need to add a file `secret.ts` to 
 the directory `/src/axios`. So, it would be `/src/axios/secret.ts`.
 
 Then place following codes in it.
