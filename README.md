@@ -6,7 +6,7 @@ A React App for showing cats 🐱 and dogs 🐶.
 
 ## Screenshot
 
-![](https://i.loli.net/2019/04/01/5ca18c60326fe.png)
+![](https://i.loli.net/2019/04/01/5ca195480c716.png)
 
 ## How to use
 
