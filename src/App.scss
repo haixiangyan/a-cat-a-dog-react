@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body {
+  background: #20232a;
+}
+
 div[role="tooltip"] {
   z-index: 1;
 }
